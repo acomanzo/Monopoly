@@ -13,6 +13,13 @@
   	/*div{
   		border:2px solid SlateBlue;
   	}*/
+	
+	/*syling for divs (spaces) in board--gold border, center text, font*/
+	.sqr {
+		border: 2px solid #cc9900;
+		text-align: center;
+		font-family: Comic Sans MS, cursive, sans-serif;
+	}
   	body {
   		margin: 0;
   		padding: 10px;
@@ -68,7 +75,6 @@
         position: relative;
         display: inline-block;
       }
-
       .dropdown-content {
         display: none;
         position: absolute;
@@ -83,7 +89,6 @@
         border-radius: 30px;
         border-color: #cc9900;
       }
-
       .dropdown:hover .dropdown-content {
         display: block;
       }
@@ -118,74 +123,83 @@
             </div>
           </div>
 		</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: red">Building</p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">Chance</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: red">Building</p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: red">Building</p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">B.A.O. Railroad</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: yellow">Building</p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: yellow">Building</p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">Water Works</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: yellow">Building</p></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">GO TO JAIL</div>
+		<!--I styled each div individually before using class = "sqr"-->
+		<!--<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: red">Building</p></div>-->
+		<div class = "col-sm-1 sqr"><!--Building-->
+			<div class = "dropdown" style = "background-color: red">
+			<span>Building</span>
+				<div class = "dropdown-content">
+					<p>Hi</p>
+				</div>
+			</div>
+		</div>
+		<div class = "col-sm-1 sqr">Chance</div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: red">Building</p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: red">Building</p></div>
+		<div class = "col-sm-1 sqr">B.A.O. Railroad</div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: yellow">Building</p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: yellow">Building</p></div>
+		<div class = "col-sm-1 sqr">Water Works</div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: yellow">Building</p></div>
+		<div class = "col-sm-2 sqr">GO TO JAIL</div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: orange">Building</p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: orange">Building</p></div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: green">Building</p></div>
+		<div class = "col-sm-2 sqr"><p style = "background-color: green">Building</p></div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: orange">Building</p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: orange">Building</p></div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: green">Building</p></div>
+		<div class = "col-sm-2 sqr"><p style = "background-color: green">Building</p></div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">COMMUNITY CHEST</div>
+		<div class = "col-sm-1 sqr">COMMUNITY CHEST</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">COMMUNITY CHEST</div>
+		<div class = "col-sm-2 sqr">COMMUNITY CHEST</div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: orange">Building</p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: orange">Building</p></div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: green">Building</p></div>
+		<div class = "col-sm-2 sqr"><p style = "background-color: green">Building</p></div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">PENNSYLVANIA RAILROAD</div>
+		<div class = "col-sm-1 sqr">PENNSYLVANIA RAILROAD</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">SHORT LINE</div>
+		<div class = "col-sm-2 sqr">SHORT LINE</div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: blueviolet"><font color = "white">Building</font></p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: blueviolet"><font color = "white">Building</font></p></div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">CHANCE</div>
+		<div class = "col-sm-2 sqr">CHANCE</div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: blueviolet"><font color = "white">Building</font></p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: blueviolet"><font color = "white">Building</font></p></div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: blue"><font color = "white">Building</font></p></div>
+		<div class = "col-sm-2 sqr"><p style = "background-color: blue"><font color = "white">Building</font></p></div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">ELECTRIC COMPANY</div>
+		<div class = "col-sm-1 sqr">ELECTRIC COMPANY</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">LUXURY TAX</div>
+		<div class = "col-sm-2 sqr">LUXURY TAX</div>
 	</div>
 	<div class = "row" style = "height: 75px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: blueviolet"><font color = "white">Building</font></p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: blueviolet"><font color = "white">Building</font></p></div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: blue"><font color = "white">Building</font></p></div>
+		<div class = "col-sm-2 sqr"><p style = "background-color: blue"><font color = "white">Building</font></p></div>
 	</div>
 	<div class = "row" style = "height: 150px;">
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">JAIL</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: #ccffff">Building</p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">Chance</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: #ccffff">Building</p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: #ccffff">Building</p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">Reading Railroad</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">INCOME TAX</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: indigo"><font color = "white">Building</font></p></div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">COMMUNITY CHEST</div>
-		<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: indigo"><font color = "white">Building</font></p></div>
-		<div class = "col-sm-2" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif">GO</div>
+		<div class = "col-sm-1 sqr">JAIL</div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: #ccffff">Building</p></div>
+		<div class = "col-sm-1 sqr">Chance</div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: #ccffff">Building</p></div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: #ccffff">Building</p></div>
+		<div class = "col-sm-1 sqr">Reading Railroad</div>
+		<div class = "col-sm-1 sqr">INCOME TAX</div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: indigo"><font color = "white">Building</font></p></div>
+		<div class = "col-sm-1 sqr">COMMUNITY CHEST</div>
+		<div class = "col-sm-1 sqr"><p style = "background-color: indigo"><font color = "white">Building</font></p></div>
+		<div class = "col-sm-2 sqr">GO</div>
 	</div>
 </div><!--end bootstrap(?)-->
 
