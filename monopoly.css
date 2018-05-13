@@ -1,0 +1,182 @@
+/*styling for monopoly*/
+	
+	.die {
+		display: inline-block;
+		margin: 20px;
+		background-color: white;
+		height: 80px;
+		width: 80px;
+		border-radius: 5px;
+		border: 1px solid #000000; 
+		box-shadow: 0 30px white;
+	}
+	
+	/* popup container - can be anything you want */
+	.popup {
+		position: relative;
+		display: inline-block;
+		cursor: pointer;
+		-webkit-user-select: none;
+		-moz-user-select: none;
+		-ms-user-select: none;
+		user-select: none;
+	}
+	
+	/* teh actual popup */
+	.popup .popuptext {
+		visibility: hidden;
+		width: 160px;
+		background-color: #555;
+		color: #fff;
+		text-align: center;
+		border-radius: 6px;
+		padding: 8px 0;
+		position: absolute;
+		z-index: 1;
+		bottom: 125%;
+		left: 50%;
+		margin-left: -80px;
+	}
+	
+	/*popup arrow*/
+	.popup .popuptext::after {
+		content: "";
+		position: absolute;
+		top: 100%;
+		left: 50%;
+		margin-left: -5px;
+		border-width: 5px;
+		border-style: solid;
+		border-color: #000000 transparent transparent transparent;
+	}
+	
+	/* toggle this class - hide and show the popup */
+	.popup .show {
+		visibility: visible;
+		-webkit-animation: fadeIn 1s;
+		animation: fadeIn 1s;
+	}
+	
+	/* add animation (fade in the popup) */
+	@-webkit-keyframes fadeIn {
+		from {opacity: 0;}
+		to {opacity: 5;}
+	}
+	
+	@keyframes fadeIn {
+		from {opacity: 0;}
+		to {opacity: 5;}
+	}
+	
+	div.dice {
+		position: absolute;
+		background-color: #FFFFFF;
+		width: 75px;
+		height: 55px;
+		border: 2px solid #000000;
+		top: 45%;
+		left: 70%;
+		font-family: Comic Sans MS, cursive, sans-serif;
+		font-size: 12px;
+		text-align: center;
+		border-radius: 5px;
+		cursor: pointer;
+		box-shadow: 0 5px #000000;
+	}
+	div.dice:hover {
+		background-color: #CDFF00;
+	}
+	div.dice:active {
+		background-color: #CDFF00;
+  		box-shadow: 0 2px #000000;
+  		transform: translateY(3px);
+	}
+	
+	div.terminal{
+		position: absolute;
+		left: calc(50% - 175px);
+		width: 250px;
+		height: 300px;
+		border: 2px solid #cc9900;
+		top: 62%;
+		font-family: Comic Sans MS, cursive, sans-serif;
+	}
+	
+	/*syling for divs (spaces) in board--gold border, center text, font*/
+	.sqr {
+		border: 2px solid #cc9900;
+		text-align: center;
+		font-family: Comic Sans MS, cursive, sans-serif;
+	}
+  	body {
+  		margin: 0;
+  		padding: 10px;
+  		background: #f1f1f1;
+  		background-color:#993333;
+  	}
+  	/*Header*/
+  	.header {
+  		background-color:#ddd;
+  		padding: 30px;
+  		text-align: center;
+  	}
+  	/*style top navigation bar*/
+  	.topnav {
+  		overflow: hidden;
+  		background-color: #333;
+  	}
+  	/*Style top nav links*/
+  	.topnav a {
+  		float: left;
+  		display: block;
+  		color: #f2f2f2;
+  		text-align: center;
+  		padding: 14px 16px;
+  		text-decoration: none;
+  	}
+  	/*change color on hover*/
+  	.topnav a:hover {
+  		background-color: #ddd;
+  		color: black;
+  	}
+  	/*card effect*/
+  	.card {
+  		background-color: white;
+  		padding: 20px;
+  		margin-top: 20px;
+  	}
+  	/*clear floats after the columns
+  	.row:after {
+  		content: "";
+  		display: table;
+  		clear: both;
+  	}*/
+  	/*footer*/
+  	.footer {
+  		padding: 20px;
+  		text-align: center;
+  		background: #ddd;
+  		margin-top: 20px;
+  	}
+  	/*dropdown for when you hover over the spaces*/
+  	.dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f9f9f9;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+        padding: 12px 16px;
+        z-index: 1;
+        background-color: lightgray;
+        border: 1px;
+        border-style: solid;
+        border-radius: 30px;
+        border-color: #cc9900;
+      }
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
