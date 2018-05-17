@@ -1,5 +1,25 @@
 /*styling for monopoly*/
 	
+	.player1 {
+		/*display: inline-block;*/
+		background-color: red;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		
+		position: absolute;
+		/*visibility: visible;*/
+	}
+	
+	.player2 {
+		background-color: blue;
+		width: 20px;
+		height: 20px;
+		border-radius: 50%;
+		position: absolute;
+		top: 20px;
+	}
+	
 	.die {
 		display: inline-block;
 		margin: 20px;
