@@ -43,8 +43,58 @@ function updatePosition() {
 	//for(i = 0; i < 40; i++) { // a way to cycle through all board ID's
 	//	document.getElementById("cell" + i)
 	//}
-	var elem = document.getElementById("cell0");
-	elem.classList.toggle("player1");
+	if(player1.isTurn === true){
+		var elem = document.getElementById("cell" + player1.position + "_1");
+		elem.classList.remove("piece1");
+		if(player1.position + die1 + die2 > 39){
+			player1.position = player1.position + die1 + die2 - 40;
+		} else {
+			player1.position += (die1 + die2);
+		}
+		elem = document.getElementById("cell" + player1.position + "_1");
+		elem.classList.add("piece1");
+		player1.isTurn = false;
+		player2.isTurn = true;
+	}
+	else if(player2.isTurn === true){
+		var elem = document.getElementById("cell" + player2.position + "_2");
+		elem.classList.remove("piece2");
+		if(player2.position + die1 + die2 > 39){
+			player2.position = player2.position + die1 + die2 - 40;
+		} else {
+			player2.position += (die1 + die2);
+		}
+		elem = document.getElementById("cell" + player2.position + "_2");
+		elem.classList.add("piece2");
+		player2.isTurn = false;
+		player3.isTurn = true;
+	}
+	else if(player3.isTurn === true){
+		var elem = document.getElementById("cell" + player3.position + "_3");
+		elem.classList.remove("piece3");
+		if(player3.position + die1 + die2 > 39){
+			player3.position = player3.position + die1 + die2 - 40;
+		} else {
+			player3.position += (die1 + die2);
+		}
+		elem = document.getElementById("cell" + player3.position + "_3");
+		elem.classList.add("piece3");
+		player3.isTurn = false;
+		player4.isTurn = true;
+	}
+	else if(player4.isTurn === true){
+		var elem = document.getElementById("cell" + player4.position + "_4");
+		elem.classList.remove("piece4");
+		if(player4.position + die1 + die2 > 39){
+			player4.position = player4.position + die1 + die2 - 40;
+		} else {
+			player4.position += (die1 + die2);
+		}
+		elem = document.getElementById("cell" + player4.position + "_4");
+		elem.classList.add("piece4");
+		player4.isTurn = false;
+		player1.isTurn = true;
+	}
 }
 
 function rollDice() {
@@ -52,9 +102,17 @@ function rollDice() {
 	die2 = Math.floor((Math.random() * 6) + 1);
 	document.getElementById("die1-display").innerHTML = die1.toString(); //innerHTML changes the HTML within that element via ID
 	document.getElementById("die2-display").innerHTML = die2.toString();
-	if(player1.isTurn === true){
-		player1.position += (die1 + die2);
-		document.getElementById("cell" + position).innerHTML += <div class = "player1"></div>
-	}
-	
+	updatePosition();
 }
+
+/*function toggleOnLoad() {
+	for(parent = 1; parent < 40; parent++){
+		for(child = 1; child <= 4; child++){
+			var elem = document.getElementById("cell" + parent + "_" + child)
+			elem.classList.toggle("piece1");
+			elem.classList.toggle("piece2");
+			elem.classList.toggle("piece3");
+			elem.classList.toggle("piece4");
+		}
+	}
+}*/
