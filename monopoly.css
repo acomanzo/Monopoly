@@ -1,23 +1,56 @@
 /*styling for monopoly*/
 	
-	.player1 {
-		/*display: inline-block;*/
+	.housePlot {
 		background-color: red;
-		width: 20px;
-		height: 20px;
-		border-radius: 50%;
-		
-		position: absolute;
-		/*visibility: visible;*/
+		border: 2px solid #cc9900; 
+		height: 20%; 
+		width: 100%;
 	}
 	
-	.player2 {
+	.house {
+		background-color: black;
+		height: 10px;
+		width: 20%;
+		margin-left: 2px;
+		margin-right: 2px; 
+		position: relative;
+		display: inline-block;
+	}
+	
+	.piece1 {
+		background-color: red;
+		width: 20px;
+		height: 10px;
+		border-radius: 50%;
+		top: 1%;
+		position: relative;
+	}
+	
+	.piece2 {
 		background-color: blue;
 		width: 20px;
-		height: 20px;
+		height: 10px;
 		border-radius: 50%;
-		position: absolute;
-		top: 20px;
+		position: relative;
+		top: 10%;
+	}
+	
+	.piece3 {
+		background-color: yellow;
+		width: 20px;
+		height: 10px;
+		border-radius: 50%;
+		position: relative;
+		top: 20%;
+	}
+	
+	.piece4 {
+		background-color: green;
+		width: 20px;
+		height: 10px;
+		border-radius: 50%;
+		position: relative;
+		top: 30%;
 	}
 	
 	.die {
