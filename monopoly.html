@@ -18,8 +18,8 @@
   </style>
   
 </head>
-<body>
-<!--<body onLoad = "toggleOnLoad()"> -->
+<body onClick = "buyProperty()">
+<!-- <body onLoad = "toggleOnLoad()"> -->
 
 <div class = "header">
 	<h1><font color = "SlateBlue">Monopoly</font></h1>
@@ -49,14 +49,27 @@
 		</div>
 		<!--I styled each div individually before using class = "sqr"-->
 		<!--<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: red">Building</p></div>-->
-		<div class = "col-sm-1 sqr" id = "cell21">
+		<div class = "col-sm-1 sqr" id = "cell21" name = "time square">
 			<div class = "housePlot" style = "background-color: red;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell21_h1"></div><div id = "cell21_h2"></div><div id = "cell21_h3"></div>
+				<!-- <div id = "cell21_h1" class = "house"></div><div id = "cell21_h2" class = "house"></div><div id = "cell21_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Times Square</span>
+				<div id = "timesSquare" class = "dropdown-content" style = "background-color: #B1FF8C";>
+					<div style = "background-color: red";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						TIMES SQUARE</p>
+					</div>
+					<p>RENT $18</br>
+					With 1 Studio  $90.</br>
+					With 2 Studios 250.</br>
+					With 3 Studios 700.</br>
+					With 4 Studios 875.</br>
+					With BROWNSTONE $1050.</br>
+					Mortgage Value $110.</br>
+					Studio cost $150. each</br>
+					Brownstones, $150. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell21_1"></div>
@@ -64,7 +77,7 @@
 			<div id = "cell21_3"></div>
 			<div id = "cell21_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell22">
+		<div class = "col-sm-1 sqr" id = "cell22" name = "null">
 			<div class = "dropdown">
 			<span>Chance</span>
 				<div class = "dropdown-content">
@@ -76,14 +89,27 @@
 			<div id = "cell22_3"></div>
 			<div id = "cell22_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell23">
+		<div class = "col-sm-1 sqr" id = "cell23" name = "wall street">
 			<div class = "housePlot" style = "background-color: red;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell23_h1"></div><div id = "cell23_h2"></div><div id = "cell23_h3"></div>
+				<!-- <div id = "cell23_h1" class = "house"></div><div id = "cell23_h2" class = "house"></div><div id = "cell23_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Wall Street</span>
+				<div id = "wallStreet" class = "dropdown-content" style = "background-color: #FAFF8C";>
+					<div style = "background-color: red";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						WALL STREET</p>
+					</div>
+					<p>RENT $20</br>
+					With 1 Studio  $100.</br>
+					With 2 Studios 300.</br>
+					With 3 Studios 750.</br>
+					With 4 Studios 925.</br>
+					With BROWNSTONE $1100.</br>
+					Mortgage Value $120.</br>
+					Studio cost $150. each</br>
+					Brownstones, $150. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell23_1"></div>
@@ -91,14 +117,27 @@
 			<div id = "cell23_3"></div>
 			<div id = "cell23_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell24">
+		<div class = "col-sm-1 sqr" id = "cell24" name = "broadway">
 			<div class = "housePlot" style = "background-color: red;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell24_h1"></div><div id = "cell24_h2"></div><div id = "cell24_h3"></div>
+				<!-- <div id = "cell24_h1" class = "house"></div><div id = "cell24_h2" class = "house"></div><div id = "cell24_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Broadway</span>
+				<div id = "broadway" class = "dropdown-content" style = "background-color: #FF8C8C";>
+					<div style = "background-color: red";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						BROADWAY</p>
+					</div>
+					<p>RENT $18</br>
+					With 1 Studio  $90.</br>
+					With 2 Studios 250.</br>
+					With 3 Studios 700.</br>
+					With 4 Studios 875.</br>
+					With BROWNSTONE $1050.</br>
+					Mortgage Value $110.</br>
+					Studio cost $150. each</br>
+					Brownstones, $150. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell24_1"></div>
@@ -106,11 +145,18 @@
 			<div id = "cell24_3"></div>
 			<div id = "cell24_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell25">
+		<div class = "col-sm-1 sqr" id = "cell25" name = "null">
 			<div class = "dropdown">
-			<span>B.A.O. Railroad</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>"N" Train</span>
+				<div id = "ntrain" class = "dropdown-content" style = "background-color: #8C9CFF";>
+					<div>
+						<p style = "font-weight: bold;">"N" TRAIN</br></p>
+					</div>
+					<p>RENT $25</br>
+					If 2 Trains are owned 50.</br>
+					If 3 100.</br>
+					If 4 200.</br>
+					Mortgage Value $100.</br></p>
 				</div>
 			</div>
 			<div id = "cell25_1"></div>
@@ -118,14 +164,27 @@
 			<div id = "cell25_3"></div>
 			<div id = "cell25_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell26">
+		<div class = "col-sm-1 sqr" id = "cell26" name = "new york harbor">
 			<div class = "housePlot" style = "background-color: yellow;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell26_h1"></div><div id = "cell26_h2"></div><div id = "cell26_h3"></div>
+				<!-- <div id = "cell26_h1" class = "house"></div><div id = "cell26_h2" class = "house"></div><div id = "cell26_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>New York Harbor</span>
+				<div id = "newyorkHarbor" class = "dropdown-content">
+					<div style = "background-color: yellow";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						NEW YORK HARBOR</p>
+					</div>
+					<p>RENT $24</br>
+					With 1 Studio  $120.</br>
+					With 2 Studios 360.</br>
+					With 3 Studios 850.</br>
+					With 4 Studios 1025.</br>
+					With BROWNSTONE $1200.</br>
+					Mortgage Value $140.</br>
+					Studio cost $150. each</br>
+					Brownstones, $150. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell26_1"></div>
@@ -133,14 +192,27 @@
 			<div id = "cell26_3"></div>
 			<div id = "cell26_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell27">
+		<div class = "col-sm-1 sqr" id = "cell27" name = "hudson river">
 			<div class = "housePlot" style = "background-color: yellow;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell27_h1"></div><div id = "cell27_h2"></div><div id = "cell27_h3"></div>
+				<!-- <div id = "cell27_h1" class = "house"></div><div id = "cell27_h2" class = "house"></div><div id = "cell27_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Hudson River</span>
+				<div id = "hudsonRiver" class = "dropdown-content">
+					<div style = "background-color: yellow";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						HUDSON RIVER</p>
+					</div>
+					<p>RENT $22</br>
+					With 1 Studio  $110.</br>
+					With 2 Studios 330.</br>
+					With 3 Studios 800.</br>
+					With 4 Studios 975.</br>
+					With BROWNSTONE $1150.</br>
+					Mortgage Value $130.</br>
+					Studio cost $150. each</br>
+					Brownstones, $150. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell27_1"></div>
@@ -148,11 +220,16 @@
 			<div id = "cell27_3"></div>
 			<div id = "cell27_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell28">
+		<div class = "col-sm-1 sqr" id = "cell28" name = "null">
 			<div class = "dropdown">
 			<span>Water Works</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+				<div id = "waterWorks" class = "dropdown-content">
+					<div>
+						<p style = "font-weight: bold;">WATER WORKS</br></p>
+					</div>
+					<p>If one "Utility" is owned rent is 4 times amount shown on dice.</br>
+					If both "Utilities" are owned rent is 10 times amount shown on dice.</br>
+					Mortgage Value $75.</p>
 				</div>
 			</div>
 			<div id = "cell28_1"></div>
@@ -160,14 +237,27 @@
 			<div id = "cell28_3"></div>
 			<div id = "cell28_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell29">
+		<div class = "col-sm-1 sqr" id = "cell29" name = "east river">
 			<div class = "housePlot" style = "background-color: yellow;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell29_h1"></div><div id = "cell29_h2"></div><div id = "cell29_h3"></div>
+				<!-- <div id = "cell29_h1" class = "house"></div><div id = "cell29_h2" class = "house"></div><div id = "cell29_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>East River</span>
+				<div id = "eastRiver" class = "dropdown-content">
+					<div style = "background-color: yellow";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						EAST RIVER</p>
+					</div>
+					<p>RENT $22</br>
+					With 1 Studio  $110.</br>
+					With 2 Studios 330.</br>
+					With 3 Studios 800.</br>
+					With 4 Studios 975.</br>
+					With BROWNSTONE $1150.</br>
+					Mortgage Value $130.</br>
+					Studio cost $150. each</br>
+					Brownstones, $150. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell29_1"></div>
@@ -175,7 +265,7 @@
 			<div id = "cell29_3"></div>
 			<div id = "cell29_4"></div>
 		</div>
-		<div class = "col-sm-2 sqr" id = "cell30">
+		<div class = "col-sm-2 sqr" id = "cell30" name = "null">
 			<div class = "dropdown">
 			<span>GO TO JAIL</span>
 				<div class = "dropdown-content">
@@ -190,14 +280,27 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell19">
+		<div class = "col-sm-1 sqr" id = "cell19" name = "greenwich village">
 			<div class = "housePlot" style = "background-color: orange;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell19_h1"></div><div id = "cell19_h2"></div><div id = "cell19_h3"></div>
+				<!-- <div id = "cell19_h1" class = "house"></div><div id = "cell19_h2" class = "house"></div><div id = "cell19_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Greenwich Village</span>
+				<div id = "greenwichVillage" class = "dropdown-content">
+					<div style = "background-color: orange";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						GREENWICH VILLAGE</p>
+					</div>
+					<p>RENT $16</br>
+					With 1 Studio  $80.</br>
+					With 2 Studios 220.</br>
+					With 3 Studios 600.</br>
+					With 4 Studios 800.</br>
+					With BROWNSTONE $1000.</br>
+					Mortgage Value $100.</br>
+					Studio cost $100. each</br>
+					Brownstones, $100. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell19_1"></div>
@@ -206,14 +309,27 @@
 			<div id = "cell19_4"></div>
 		</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell31">
+		<div class = "col-sm-2 sqr" id = "cell31" name = "empire state building">
 			<div class = "housePlot" style = "background-color: green;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell31_h1"></div><div id = "cell31_h2"></div><div id = "cell31_h3"></div>
+				<!-- <div id = "cell31_h1" class = "house"></div><div id = "cell31_h2" class = "house"></div><div id = "cell31_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Empire State Building</span>
+				<div id = "empireStateBuilding" class = "dropdown-content">
+					<div style = "background-color: green";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						EMPIRE STATE BUILDING</p>
+					</div>
+					<p>RENT $28</br>
+					With 1 Studio  $150.</br>
+					With 2 Studios 450.</br>
+					With 3 Studios 1000.</br>
+					With 4 Studios 1200.</br>
+					With BROWNSTONE $1400.</br>
+					Mortgage Value $160.</br>
+					Studio cost $200. each</br>
+					Brownstones, $200. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell31_1"></div>
@@ -224,14 +340,27 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell18">
+		<div class = "col-sm-1 sqr" id = "cell18" name = "little italy">
 			<div class = "housePlot" style = "background-color: orange;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell18_h1"></div><div id = "cell18_h2"></div><div id = "cell18_h3"></div>
+				<!-- <div id = "cell18_h1" class = "house"></div><div id = "cell18_h2" class = "house"></div><div id = "cell18_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Little Italy</span>
+				<div id = "littleItaly" class = "dropdown-content">
+					<div style = "background-color: orange";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						LITTLE ITALY</p>
+					</div>
+					<p>RENT $14</br>
+					With 1 Studio  $70.</br>
+					With 2 Studios 200.</br>
+					With 3 Studios 550.</br>
+					With 4 Studios 750.</br>
+					With BROWNSTONE $950.</br>
+					Mortgage Value $90.</br>
+					Studio cost $100. each</br>
+					Brownstones, $100. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell18_1"></div>
@@ -240,14 +369,27 @@
 			<div id = "cell18_4"></div>
 		</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell32">
+		<div class = "col-sm-2 sqr" id = "cell32" name = "statue of liberty">
 			<div class = "housePlot" style = "background-color: green;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell32_h1"></div><div id = "cell32_h2"></div><div id = "cell32_h3"></div>
+				<!-- <div id = "cell32_h1" class = "house"></div><div id = "cell32_h2" class = "house"></div><div id = "cell32_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Statue of Liberty</span>
+				<div id = "statueOfLiberty" class = "dropdown-content">
+					<div style = "background-color: green";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						STATEUE OF LIBERTY</p>
+					</div>
+					<p>RENT $26</br>
+					With 1 Studio  $130.</br>
+					With 2 Studios 390.</br>
+					With 3 Studios 900.</br>
+					With 4 Studios 1100.</br>
+					With BROWNSTONE $1275.</br>
+					Mortgage Value $150.</br>
+					Studio cost $200. each</br>
+					Brownstones, $200. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell32_1"></div>
@@ -258,7 +400,7 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell17">
+		<div class = "col-sm-1 sqr" id = "cell17" name = "null">
 			<div class = "dropdown">
 			<span style = "font-size: 12px;">COMMUNITY CHEST</span>
 				<div class = "dropdown-content">
@@ -286,14 +428,27 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell16">
+		<div class = "col-sm-1 sqr" id = "cell16" name = "chinatown">
 			<div class = "housePlot" style = "background-color: orange;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell16_h1"></div><div id = "cell16_h2"></div><div id = "cell16_h3"></div>
+				<!-- <div id = "cell16_h1" class = "house"></div><div id = "cell16_h2" class = "house"></div><div id = "cell16_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Chinatown</span>
+				<div id = "chinatown" class = "dropdown-content">
+					<div style = "background-color: orange";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						CHINATOWN</p>
+					</div>
+					<p>RENT $14</br>
+					With 1 Studio  $70.</br>
+					With 2 Studios 200.</br>
+					With 3 Studios 550.</br>
+					With 4 Studios 750.</br>
+					With BROWNSTONE $950.</br>
+					Mortgage Value $90.</br>
+					Studio cost $100. each</br>
+					Brownstones, $100. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell16_1"></div>
@@ -302,14 +457,27 @@
 			<div id = "cell16_4"></div>
 		</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell34">
+		<div class = "col-sm-2 sqr" id = "cell34" name = "new york public library">
 			<div class = "housePlot" style = "background-color: green;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell34_h1"></div><div id = "cell34_h2"></div><div id = "cell34_h3"></div>
+				<!-- <div id = "cell34_h1" class = "house"></div><div id = "cell34_h2" class = "house"></div><div id = "cell34_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>New York Public Library</span>
+				<div id = "newyorkPublicLibrary" class = "dropdown-content">
+					<div style = "background-color: green";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						NEW YORK PUBLIC LIBRARY</p>
+					</div>
+					<p>RENT $26</br>
+					With 1 Studio  $130.</br>
+					With 2 Studios 390.</br>
+					With 3 Studios 900.</br>
+					With 4 Studios 1100.</br>
+					With BROWNSTONE $1275.</br>
+					Mortgage Value $150.</br>
+					Studio cost $200. each</br>
+					Brownstones, $200. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell34_1"></div>
@@ -320,11 +488,18 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell15">
+		<div class = "col-sm-1 sqr" id = "cell15" name = "null">
 			<div class = "dropdown">
-			<span style = "font-size: 10px;">PENNSYLVANIA RAILROAD</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>"D" Train</span>
+				<div id = "dtrain" class = "dropdown-content">
+					<div>
+						<p style = "font-weight: bold;">"D" TRAIN</br></p>
+					</div>
+					<p>RENT $25</br>
+					If 2 Trains are owned 50.</br>
+					If 3 100.</br>
+					If 4 200.</br>
+					Mortgage Value $100.</br></p>
 				</div>
 			</div>
 			<div id = "cell15_1"></div>
@@ -333,11 +508,18 @@
 			<div id = "cell15_4"></div>
 		</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell35">
+		<div class = "col-sm-2 sqr" id = "cell35" name = "null">
 			<div class = "dropdown">
-			<span>SHORT LINE</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>"4" Train</span>
+				<div id = "4train" class = "dropdown-content">
+					<div>
+						<p style = "font-weight: bold;">"4" TRAIN</br></p>
+					</div>
+					<p>RENT $25</br>
+					If 2 Trains are owned 50.</br>
+					If 3 100.</br>
+					If 4 200.</br>
+					Mortgage Value $100.</br></p>
 				</div>
 			</div>
 			<div id = "cell35_1"></div>
@@ -348,14 +530,27 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell14">
+		<div class = "col-sm-1 sqr" id = "cell14" name = "central park">
 			<div class = "housePlot" style = "background-color: blueviolet;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell14_h1"></div><div id = "cell14_h2"></div><div id = "cell14_h3"></div>
+				<!-- <div id = "cell14_h1" class = "house"></div><div id = "cell14_h2" class = "house"></div><div id = "cell14_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Central Park</span>
+				<div id = "centralPark" class = "dropdown-content">
+					<div style = "background-color: blueviolet";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						CENTRAL PARK</p>
+					</div>
+					<p>RENT $10</br>
+					With 1 Studio  $50.</br>
+					With 2 Studios 150.</br>
+					With 3 Studios 450.</br>
+					With 4 Studios 625.</br>
+					With BROWNSTONE $750.</br>
+					Mortgage Value $70.</br>
+					Studio cost $100. each</br>
+					Brownstones, $100. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell14_1"></div>
@@ -364,7 +559,7 @@
 			<div id = "cell14_4"></div>
 		</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell36">
+		<div class = "col-sm-2 sqr" id = "cell36" name = "null">
 			<div class = "dropdown">
 			<span>CHANCE</span>
 				<div class = "dropdown-content">
@@ -379,14 +574,27 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell13">
+		<div class = "col-sm-1 sqr" id = "cell13" name = "battery park">
 			<div class = "housePlot" style = "background-color: blueviolet;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell13_h1"></div><div id = "cell13_h2"></div><div id = "cell13_h3"></div>
+				<!-- <div id = "cell13_h1" class = "house"></div><div id = "cell13_h2" class = "house"></div><div id = "cell13_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Battery Park</span>
+				<div id = "batteryPark" class = "dropdown-content">
+					<div style = "background-color: blueviolet";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						BATTERY PARK</p>
+					</div>
+					<p>RENT $10</br>
+					With 1 Studio  $50.</br>
+					With 2 Studios 150.</br>
+					With 3 Studios 450.</br>
+					With 4 Studios 625.</br>
+					With BROWNSTONE $750.</br>
+					Mortgage Value $70.</br>
+					Studio cost $100. each</br>
+					Brownstones, $100. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell13_1"></div>
@@ -395,14 +603,27 @@
 			<div id = "cell13_4"></div>
 		</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell37">
+		<div class = "col-sm-2 sqr" id = "cell37" name = "fifth avenue">
 			<div class = "housePlot" style = "background-color: blue;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell37_h1"></div><div id = "cell37_h2"></div><div id = "cell37_h3"></div>
+				<!-- <div id = "cell37_h1" class = "house"></div><div id = "cell37_h2" class = "house"></div><div id = "cell37_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Fifth Avenue</span>
+				<div id = "fifthAvenue" class = "dropdown-content">
+					<div style = "background-color: blue";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						FIFTH AVENUE</p>
+					</div>
+					<p>RENT $50</br>
+					With 1 Studio  $200.</br>
+					With 2 Studios 600.</br>
+					With 3 Studios 1400.</br>
+					With 4 Studios 1700.</br>
+					With BROWNSTONE $2000.</br>
+					Mortgage Value $200.</br>
+					Studio cost $200. each</br>
+					Brownstones, $200. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell37_1"></div>
@@ -413,11 +634,16 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell12">
+		<div class = "col-sm-1 sqr" id = "cell12" name = "null">
 			<div class = "dropdown">
 			<span style = "font-size: 12px;">ELECTRIC COMPANY</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+				<div id = "electricCompany" class = "dropdown-content">
+					<div>
+						<p style = "font-weight: bold;">ELECTRIC COMPANY</br></p>
+					</div>
+					<p>If one "Utility" is owned rent is 4 times amount shown on dice.</br>
+					If both "Utilities" are owned rent is 10 times amount shown on dice.</br>
+					Mortgage Value $75.</p>
 				</div>
 			</div>
 			<div id = "cell12_1"></div>
@@ -426,7 +652,7 @@
 			<div id = "cell12_4"></div>
 		</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell38">
+		<div class = "col-sm-2 sqr" id = "cell38" name = "null">
 			<div class = "dropdown">
 			<span>LUXURY TAX</span>
 				<div class = "dropdown-content">
@@ -441,14 +667,27 @@
 	</div>
 	
 	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell11">
+		<div class = "col-sm-1 sqr" id = "cell11" name = "washington square park">
 			<div class = "housePlot" style = "background-color: blueviolet;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell11_h1"></div><div id = "cell11_h2"></div><div id = "cell11_h3"></div>
+				<!-- <div id = "cell11_h1" class = "house"></div><div id = "cell11_h2" class = "house"></div><div id = "cell11_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Washington Square Park</span>
+				<div id = "washingtonSquarePark" class = "dropdown-content">
+					<div style = "background-color: blueviolet";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						WASHINGTON SQUARE PARK</p>
+					</div>
+					<p>RENT $12</br>
+					With 1 Studio  $60.</br>
+					With 2 Studios 180.</br>
+					With 3 Studios 150.</br>
+					With 4 Studios 700.</br>
+					With BROWNSTONE $900.</br>
+					Mortgage Value $80.</br>
+					Studio cost $100. each</br>
+					Brownstones, $100. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell11_1"></div>
@@ -457,14 +696,27 @@
 			<div id = "cell11_4"></div>
 		</div>
 		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell39">
+		<div class = "col-sm-2 sqr" id = "cell39" name = "park avenue">
 			<div class = "housePlot" style = "background-color: blue;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell39_h1"></div><div id = "cell39_h2"></div><div id = "cell39_h3"></div>
+				<!-- <div id = "cell39_h1" class = "house"></div><div id = "cell39_h2" class = "house"></div><div id = "cell39_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Park Avenue</span>
+				<div id = "parkAvenue" class = "dropdown-content">
+					<div style = "background-color: blue";>
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						PARK AVENUE</p>
+					</div>
+					<p>RENT $35</br>
+					With 1 Studio  $175.</br>
+					With 2 Studios 500.</br>
+					With 3 Studios 1100.</br>
+					With 4 Studios 1300.</br>
+					With BROWNSTONE $1500.</br>
+					Mortgage Value $175.</br>
+					Studio cost $200. each</br>
+					Brownstones, $200. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell39_1"></div>
@@ -475,7 +727,7 @@
 	</div>
 	
 	<div class = "row" style = "height: 150px;">
-		<div class = "col-sm-1 sqr" id = "cell10">
+		<div class = "col-sm-1 sqr" id = "cell10" name = "null">
 			<div class = "dropdown">
 			<span>JAIL</span>
 				<div class = "dropdown-content">
@@ -487,14 +739,27 @@
 			<div id = "cell10_3"></div>
 			<div id = "cell10_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell9">
+		<div class = "col-sm-1 sqr" id = "cell9" name = "manhattan">
 			<div class = "housePlot" style = "background-color: #ccffff;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell9_h1"></div><div id = "cell9_h2"></div><div id = "cell9_h3"></div>
+				<!-- <div id = "cell9_h1" class = "house"></div><div id = "cell9_h2" class = "house"></div><div id = "cell9_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Manhattan</span>
+				<div id = "manhattan" class = "dropdown-content">
+					<div style = "background-color: #ccffff;">
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						MANHATTAN</p>
+					</div>
+					<p>RENT $8</br>
+					With 1 Studio  $40.</br>
+					With 2 Studios 100.</br>
+					With 3 Studios 300.</br>
+					With 4 Studios 450.</br>
+					With BROWNSTONE $600.</br>
+					Mortgage Value $60.</br>
+					Studio cost $50. each</br>
+					Brownstones, $50. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell9_1"></div>
@@ -502,7 +767,7 @@
 			<div id = "cell9_3"></div>
 			<div id = "cell9_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell8">
+		<div class = "col-sm-1 sqr" id = "cell8" name = "null">
 			<div class = "dropdown">
 			<span>Chance</span>
 				<div class = "dropdown-content">
@@ -514,14 +779,27 @@
 			<div id = "cell8_3"></div>
 			<div id = "cell8_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell7">
+		<div class = "col-sm-1 sqr" id = "cell7" name = "queens">
 			<div class = "housePlot" style = "background-color: #ccffff;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell7_h1"></div><div id = "cell7_h2"></div><div id = "cell7_h3"></div>
+				<!-- <div id = "cell7_h1" class = "house"></div><div id = "cell7_h2" class = "house"></div><div id = "cell7_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Queens</span>
+				<div id = "queens" class = "dropdown-content">
+					<div style = "background-color: #ccffff;">
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						QUEENS</p>
+					</div>
+					<p>RENT $6</br>
+					With 1 Studio  $30.</br>
+					With 2 Studios 90.</br>
+					With 3 Studios 270.</br>
+					With 4 Studios 400.</br>
+					With BROWNSTONE $550.</br>
+					Mortgage Value $50.</br>
+					Studio cost $50. each</br>
+					Brownstones, $50. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell7_1"></div>
@@ -529,14 +807,27 @@
 			<div id = "cell7_3"></div>
 			<div id = "cell7_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell6">
+		<div class = "col-sm-1 sqr" id = "cell6" name = "brooklyn">
 			<div class = "housePlot" style = "background-color: #ccffff;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell6_h1"></div><div id = "cell6_h2"></div><div id = "cell6_h3"></div>
+				<!-- <div id = "cell6_h1" class = "house"></div><div id = "cell6_h2" class = "house"></div><div id = "cell6_h3" class = "house"></div> -->
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Brooklyn</span>
+				<div id = "brooklyn" class = "dropdown-content">
+					<div style = "background-color: #ccffff;">
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						BROOKLYN</p>
+					</div>
+					<p>RENT $6</br>
+					With 1 Studio  $30.</br>
+					With 2 Studios 90.</br>
+					With 3 Studios 270.</br>
+					With 4 Studios 400.</br>
+					With BROWNSTONE $550.</br>
+					Mortgage Value $50.</br>
+					Studio cost $50. each</br>
+					Brownstones, $50. plus 4 studios</p>
 				</div>
 			</div>
 			<div id = "cell6_1"></div>
@@ -544,11 +835,18 @@
 			<div id = "cell6_3"></div>
 			<div id = "cell6_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell5">
+		<div class = "col-sm-1 sqr" id = "cell5" name = "null">
 			<div class = "dropdown">
-			<span>Reading Railroad</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>"A" Train</span>
+				<div id = "atrain" class = "dropdown-content">
+					<div>
+						<p style = "font-weight: bold;">"4" TRAIN</br></p>
+					</div>
+					<p>RENT $25</br>
+					If 2 Trains are owned 50.</br>
+					If 3 100.</br>
+					If 4 200.</br>
+					Mortgage Value $100.</br></p>
 				</div>
 			</div>
 			<div id = "cell5_1"></div>
@@ -556,7 +854,7 @@
 			<div id = "cell5_3"></div>
 			<div id = "cell5_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell4">
+		<div class = "col-sm-1 sqr" id = "cell4" name = "null">
 			<div class = "dropdown">
 			<span>INCOME TAX</span>
 				<div class = "dropdown-content">
@@ -568,14 +866,26 @@
 			<div id = "cell4_3"></div>
 			<div id = "cell4_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell3">
+		<div class = "col-sm-1 sqr" id = "cell3" name = "bronx">
 			<div class = "housePlot" style = "background-color: indigo;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell3_h1"></div><div id = "cell3_h2"></div><div id = "cell3_h3"></div>
 			</div>
 		<div class = "dropdown">
-			<span>Building</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
+			<span>Bronx</span>
+				<div id = "bronx" class = "dropdown-content">
+					<div style = "background-color: indigo">
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						BRONX</p>
+					</div>
+					<p>RENT $2</br>
+					With 1 Studio  $10.</br>
+					With 2 Studios 30.</br>
+					With 3 Studios 90.</br>
+					With 4 Studios 160.</br>
+					With BROWNSTONE $250.</br>
+					Mortgage Value $30.</br>
+					Studio cost $50. each</br>
+					Brownstones, $50. plus 4 studios</p>
 				</div>
 			</div>
 			<!--<div class = "piece1"></div>
@@ -585,7 +895,7 @@
 			<div id = "cell3_3"></div>
 			<div id = "cell3_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell2">
+		<div class = "col-sm-1 sqr" id = "cell2" name = "null">
 			<div class = "dropdown">
 			<span style = "font-size: 12px;">COMMUNITY CHEST</span>
 				<div class = "dropdown-content">
@@ -599,15 +909,27 @@
 			<div id = "cell2_3"></div>
 			<div id = "cell2_4"></div>
 		</div>
-		<div class = "col-sm-1 sqr" id = "cell1">
+		<div class = "col-sm-1 sqr" id = "cell1" name = "staten island">
 			<div class = "housePlot" style = "background-color: indigo;">
-				<div class = "house"></div><div class = "house"></div><div class = "house"></div>
+				<div id = "cell1_h1"></div><div id = "cell1_h2"></div><div id = "cell1_h3"></div>
 			</div>
 			<div class = "dropdown">
-			<span>Building</span>
+			<span>Staten Island</span>
 				<!--<div class = "piece1 piece2"></div>-->
-				<div class = "dropdown-content">
-					<p>Hi</p>
+				<div id = "statenIsland" class = "dropdown-content">
+					<div style = "background-color: indigo">
+						<p style = "font-weight: bold;">TITLE DEED</br>
+						STATEN ISLAND</p>
+					</div>
+					<p>RENT $4</br>
+					With 1 Studio  $20.</br>
+					With 2 Studios 60.</br>
+					With 3 Studios 180.</br>
+					With 4 Studios 320.</br>
+					With BROWNSTONE $450.</br>
+					Mortgage Value $30.</br>
+					Studio cost $50. each</br>
+					Brownstones, $50. plus 4 studios</p>
 				</div>
 			</div>
 			<!--<div class = "piece1"></div>
@@ -617,7 +939,7 @@
 			<div id = "cell1_3"></div>
 			<div id = "cell1_4"></div>
 		</div>
-		<div class = "col-sm-2 sqr" id = "cell0" onClick = "updatePosition()">
+		<div class = "col-sm-2 sqr" id = "cell0" name = "go" onClick = "test()">
 			<div class = "dropdown">
 			<span>GO</span>
 				<div class = "dropdown-content">
@@ -634,17 +956,29 @@
 	
 </div><!--end bootstrap(?)-->
 
-<div class = "terminal">hi
-	<div style = "background-color: #cc9900;">shalom
-		<div>
-			<div class = "die" id = "die1-display">Die!</div>
-			<div class = "die" id = "die2-display">You die!</div>
-		</div>
-	</div>
+<div class = "terminal">Shalom and welcome to Monopoly NYC edition. It is player 1's turn.
+	<div class = "trade-button" onClick = "askTrade()">Trade</div>
+		<div id = "function-box" class = "function-container"></div>
+			<div class = "diceContainer">
+				<div>
+					<div class = "die" id = "die1-display">Die!</div>
+					<div class = "die" id = "die2-display">You die!</div>
+				</div>
+			</div>
 </div>
 
-<div id = "diceButton" class = "dice popup" onclick = "myFunction()">Roll Dice!
+<div id = "diceButton" class = "dice-button popup" onclick = "myFunction()">Roll Dice!
 	<span class = "popuptext" id = "myPopup">tee hee that tickles!</span>
+</div>
+
+<div id = "selectBox" class = "select-menu">
+	<select id = "tradeSelect" name = "tradeSelect"></select>
+	<select id = "playerSelect" name = "playerSelect"></select>
+	<input id = "submitButton" type="submit" class="btn btn-info" value="Submit Button">
+</div>
+
+<div id = "log" class = "log">
+	This is the log.
 </div>
 
 <div class = "footer">
