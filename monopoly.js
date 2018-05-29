@@ -4,7 +4,8 @@ var player1 = {
 	position: 0,
 	color: "red",
 	isTurn: true,
-	inJail: false
+	inJail: false,
+	properties: ["staten island","bronx"]
 };
 
 var player2 = {
@@ -28,8 +29,10 @@ var player4 = {
 	inJail: false
 };
 
-var kentuckyAvenue = {
-	
+var statenIsland = {
+	house1: false,
+	house2: false,
+	house3: false
 };
 
 var die1 = 0;
@@ -37,6 +40,14 @@ var die2 = 0;
 var doublesRolled = 0;
 var oldElem = null; //this is the previous space the player piece was on
 var newElem = null; //this is the new space the player piece will be put on
+var propertySpaces = ["null", "staten island", "null", "bronx",
+"null", "null", "brooklyn", "queens", "null", "manhattan",
+"null", "washington square park", "null", "battery park", "central park", 
+"null", "chinatown", "null", "little italy", "greenwich village", "null",
+"times square", "null", "wall street", "broadway", "null",
+"new york harbor", "hudson river", "null", "east river", "null",
+"empire state building", "statue of liberty", "null", "new york public library",
+"null", "null", "fifth avenue", "null", "park avenue"];
 
 //when user clicks on div, open the popup
 function myFunction() {
@@ -89,6 +100,7 @@ function updatePosition() {
 				} else {
 					player1.isTurn = false;
 					player2.isTurn = true;
+					doublesRolled = 0;
 				}
 			}
 		}
@@ -128,6 +140,7 @@ function updatePosition() {
 				} else {
 					player2.isTurn = false;
 					player3.isTurn = true;
+					doublesRolled = 0;
 				}
 			}
 		}
@@ -167,6 +180,7 @@ function updatePosition() {
 				} else {
 					player3.isTurn = false;
 					player4.isTurn = true;
+					doublesRolled = 0;
 				}
 			}
 		}	
@@ -206,6 +220,7 @@ function updatePosition() {
 				} else {
 					player4.isTurn = false;
 					player1.isTurn = true;
+					doublesRolled = 0;
 				}
 			}
 		}
@@ -222,14 +237,34 @@ function rollDice() {
 
 /*function toggleOnLoad() {
 	for(parent = 1; parent < 40; parent++){
-		for(child = 1; child <= 4; child++){
-			var elem = document.getElementById("cell" + parent + "_" + child)
-			elem.classList.toggle("piece1");
-			elem.classList.toggle("piece2");
-			elem.classList.toggle("piece3");
-			elem.classList.toggle("piece4");
+		for(child = 1; child <= 3; child++){
+		if(parent === 2 
+			|| parent === 4
+			|| parent === 5
+			|| parent === 8
+			|| parent === 10
+			|| parent === 12
+			|| parent === 15
+			|| parent === 17
+			|| parent === 20
+			|| parent === 22
+			|| parent === 25
+			|| parent === 28
+			|| parent === 30
+			|| parent === 33
+			|| parent === 35
+			|| parent === 36
+			|| parent === 38){
+			var elem = document.getElementById("cell" + parent + "_h" + child)
+			elem.classList.toggle("house");
+			}			
 		}
 	}
+	//document.getElementById("cell1_h1").classList.toggle("house");
+}*/
+
+/*function startup() {
+	document.getElementById("timessquare").innerHTML = "<div style = background-color: \"blue\";>hi</div>";
 }*/
 
 function goToJail() {
@@ -240,33 +275,45 @@ function goToJail() {
 		newElem = document.getElementById("cell10_1");
 		newElem.classList.add("piece1");
 		player1.position = 10;
+		player1.inJail = true;
+		player1.isTurn = false;
+		player2.isTurn = true;
 		return true;
 	}
-	if(player2.position === 30){
+	else if(player2.position === 30){
 		alert("You're going to jail!");
 		oldElem = document.getElementById("cell" + player2.position + "_2");
 		oldElem.classList.remove("piece2");
 		newElem = document.getElementById("cell10_2");
 		newElem.classList.add("piece2");
 		player2.position = 10;
+		player2.inJail = true;
+		player2.isTurn = false;
+		player3.isTurn = true;
 		return true;
 	}
-	if(player3.position === 30){
+	else if(player3.position === 30){
 		alert("You're going to jail!");
 		oldElem = document.getElementById("cell" + player3.position + "_3");
 		oldElem.classList.remove("piece3");
 		newElem = document.getElementById("cell10_3");
 		newElem.classList.add("piece3");
 		player3.position = 10;
+		player3.inJail = true;
+		player3.isTurn = false;
+		player4.isTurn = true;
 		return true;
 	}
-	if(player4.position === 30){
+	else if(player4.position === 30){
 		alert("You're going to jail!");
 		oldElem = document.getElementById("cell" + player4.position + "_4");
 		oldElem.classList.remove("piece4");
 		newElem = document.getElementById("cell10_4");
 		newElem.classList.add("piece4");
 		player4.position = 10;
+		player4.inJail = true;
+		player4.isTurn = false;
+		player1.isTurn = true;
 		return true;
 	}
 	return false;
@@ -297,4 +344,53 @@ function getOutOfJail() {
 			alert("Player 4 is out of jail.");
 		}
 	}
+}
+
+function buyProperty(){
+	//var elem = document.getElementById("cell" + player1.position);
+	var elem = document.getElementById("cell3");
+	var name = elem.getAttribute('name');
+	alert(name);
+	var elem = document.getElementById("log");
+	elem.innerHTML = "Do you want to purchase " + propertySpaces[1] + "?";
+}
+
+function askTrade(){
+	var propOption;
+	var pOption;
+	var elem = document.getElementById("selectBox");
+	elem.style.display = "inline";
+	var select = document.getElementById("tradeSelect");
+	for(i = 0; i < player1.properties.length; i++) {
+		var option = document.createElement('option');
+		option.text = player1.properties[i];
+		select.add(option, 0);
+	}
+	
+	select = document.getElementById("playerSelect");
+	for(j = 1; j <= 4; j++){
+		option = document.createElement('option');
+		option.text = "Player " + j;
+		select.add(option, 0);
+	}
+	elem = document.getElementById("log");
+	elem.innerHTML = "Choose a property and player.";
+	
+	document.getElementById("submitButton").addEventListener("click", function(){
+		elem = document.getElementById("tradeSelect");
+		propOption = elem.options[elem.selectedIndex].text;
+		
+		elem = document.getElementById("playerSelect");
+		pOption = elem.options[elem.selectedIndex].text;
+		alert(propOption + " to " + pOption);
+	});
+}
+	
+
+var poop = 1;
+function test() {
+	var elem = document.getElementById("cell1_h" + poop);
+	elem.classList.add("house");
+	elem.style.backgroundColor = "red";
+	poop++;
 }
