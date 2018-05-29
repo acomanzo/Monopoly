@@ -1,5 +1,59 @@
 /*styling for monopoly*/
 	
+	.log{
+		height: 600px;
+		width: 300px;
+		left: 10%;
+		top: 80%;
+		font-family: Comic Sans MS, cursive, sans-serif;
+		position: absolute;
+		border: 2px solid #cc9900;
+		text-align: center;
+	}
+	
+	.select-menu { /*this overlays the function-box div and when you press the div button, it appears*/
+		text-align: center;
+		position: absolute;
+		left: calc(50% - 275px);
+		width: 475px;
+		height: 238px;
+		border: 2px solid SlateBlue;
+		top: 907px;
+		font-family: Comic Sans MS, cursive, sans-serif;
+		margin: 4px;
+		display: none;
+	}
+	
+	.trade-button:hover {
+		background-color: SlateBlue;
+		box-shadow: 0px 0px 10px grey;
+		-webkit-animation: trade-hover 1s;
+		cursor: pointer;
+		color: white;
+		border: 2px solid black;
+		border-radius: 5px;
+		transform: scale(1.01,1.01);
+		-webkit-transition: all 0.3s ease-in-out;
+		/*transition: all 0.3s ease-in-out; dont put this here because it won't work*/
+		
+		/*transition: box-shadow 0.3s ease-in-out;
+		transition: background-color 0.3s ease-in-out;
+		transition: color 0.3s ease-in-out;
+		transition: border 0.3s ease-in-out;*/
+	}
+	
+	.trade-button {
+		/*box-shadow: 0 1px 2px grey;*/
+		background-color: #A99DD0;
+		width: 30%;
+		height: 10%;
+		margin: 5px;
+		color: grey; 
+		border: 2px solid grey;
+		border-radius: 5px;
+		transition: all 0.3s ease-in-out; /*all instead of doing a transtion line for each*/
+	}
+	
 	.hotel {
 		background-color: black;
 		height: 10px;
@@ -65,17 +119,6 @@
 		top: 30%;
 	}
 	
-	.die {
-		display: inline-block;
-		margin: 20px;
-		background-color: white;
-		height: 80px;
-		width: 80px;
-		border-radius: 5px;
-		border: 1px solid #000000; 
-		box-shadow: 0 30px white;
-	}
-	
 	/* popup container - can be anything you want */
 	.popup {
 		position: relative;
@@ -133,7 +176,7 @@
 		to {opacity: 5;}
 	}
 	
-	div.dice {
+	div.dice-button {
 		position: absolute;
 		background-color: #FFFFFF;
 		width: 75px;
@@ -148,22 +191,54 @@
 		cursor: pointer;
 		box-shadow: 0 5px #000000;
 	}
-	div.dice:hover {
+	div.dice-button:hover {
 		background-color: #CDFF00;
+		/*box-shadow: 0px 0px 10px #CDFF00 inset;*/
 	}
-	div.dice:active {
+	div.dice-button:active {
 		background-color: #CDFF00;
   		box-shadow: 0 2px #000000;
   		transform: translateY(3px);
 	}
 	
-	div.terminal{
+	.diceContainer {
+		background-color: #BBBBBB;
+		border: 2px solid black;
 		position: absolute;
-		left: calc(50% - 175px);
-		width: 250px;
-		height: 300px;
+		bottom: 0px;
+		height: 35%;
+		width: 300px;
+		margin: 20px;
+		text-align: center;
+	}
+	
+	.die {
+		display: inline-block;
+		margin: 20px;
+		background-color: white;
+		height: 80px;
+		width: 80px;
+		border-radius: 5px;
+		border: 1px solid #000000; 
+		box-shadow: 0 40px white;
+	}
+	
+	.function-container {
+		border: 2px solid black;
+		margin: 2px;
+		height: 40%;
+		width: 475px;
+		position: relative;
+	}
+	
+	div.terminal{
+		text-align: center;
+		position: absolute;
+		left: calc(50% - 275px);
+		width: 550px;
+		height: 600px;
 		border: 2px solid #cc9900;
-		top: 62%;
+		top: 80%;
 		font-family: Comic Sans MS, cursive, sans-serif;
 	}
 	
@@ -232,7 +307,7 @@
         display: none;
         position: absolute;
         background-color: #f9f9f9;
-        min-width: 160px;
+        min-width: 220px;
         box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
         padding: 12px 16px;
         z-index: 1;
@@ -241,6 +316,7 @@
         border-style: solid;
         border-radius: 30px;
         border-color: #cc9900;
+        font-size: 12px;
       }
       .dropdown:hover .dropdown-content {
         display: block;
