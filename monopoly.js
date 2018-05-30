@@ -232,6 +232,7 @@ var die2 = 0;
 var doublesRolled = 0;
 var oldElem = null; //this is the previous space the player piece was on
 var newElem = null; //this is the new space the player piece will be put on
+
 var propertySpaces = [null, statenIsland, null, bronx,
 null, null, brooklyn, queens, null, manhattan,
 null, washingtonSquarePark, null, batteryPark, centralPark, 
@@ -565,10 +566,24 @@ function buyProperty(){
 	var box = document.getElementById("selectBox");
 	var choice; //will equal yes or no
 	box.style.display = "inline";
-	var select = document.getElementById("tradeSelect");
+	var select = document.getElementById("firstDropdown");
 	if(player1.isTurn === true){
 		//alert("hi");
 		if(propertySpaces[player1.position].isOwned === false){
+			var select = document.getElementById("firstDropdown");
+			for(i = 0; i < player1.properties.length; i++) { //this removes the properties from the first dropdown
+				var option = document.createElement('option');
+				option.text = player1.properties[i];
+				select.remove(option, 0);
+			}
+			select = document.getElementById("firstDropdown");
+			for(j = 1; j <= 4; j++){ //this removes the player names from the next dropdown
+				var option = document.createElement('option');
+				option.text = "Player " + j;
+				select.remove(option, 0);
+			}
+		
+			select = document.getElementById("firstDropdown");
 			log.innerHTML = "Do you want to purchase " + propertySpaces[player1.position].name + "?";
 			var yes = document.createElement('option');
 			yes.text = "yes";
@@ -578,9 +593,16 @@ function buyProperty(){
 			select.add(no, 0);
 			
 			document.getElementById("submitButton").addEventListener("click", function(){
-				var e = document.getElementById("tradeSelect");
+				var e = document.getElementById("firstDropdown");
 				choice = e.options[e.selectedIndex].text;
 				alert(choice);
+				if(choice === "yes"){
+					player1.properties.push(propertySpaces[player1.position.name]);
+					log.innerHTML = "Player 1 bought " + propertySpaces[player1.position].name + ". Resume with your turn.";
+				}
+				else if(choice === "no"){
+					log.innerHTML = "Resume with your turn.";
+				}
 			});
 		}
 		
@@ -603,14 +625,14 @@ function askTrade(){
 	var pOption;
 	var elem = document.getElementById("selectBox");
 	elem.style.display = "inline";
-	var select = document.getElementById("tradeSelect");
+	var select = document.getElementById("firstDropdown");
 	for(i = 0; i < player1.properties.length; i++) {
 		var option = document.createElement('option');
 		option.text = player1.properties[i];
 		select.add(option, 0);
 	}
 	
-	select = document.getElementById("playerSelect");
+	select = document.getElementById("secondDropdown");
 	for(j = 1; j <= 4; j++){
 		option = document.createElement('option');
 		option.text = "Player " + j;
@@ -620,10 +642,10 @@ function askTrade(){
 	elem.innerHTML = "Choose a property and player.";
 	
 	document.getElementById("submitButton").addEventListener("click", function(){
-		elem = document.getElementById("tradeSelect");
+		elem = document.getElementById("firstDropdown");
 		propOption = elem.options[elem.selectedIndex].text;
 		
-		elem = document.getElementById("playerSelect");
+		elem = document.getElementById("secondDropdown");
 		pOption = elem.options[elem.selectedIndex].text;
 		alert(propOption + " to " + pOption);
 	});
