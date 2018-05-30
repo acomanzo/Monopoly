@@ -30,9 +30,201 @@ var player4 = {
 };
 
 var statenIsland = {
+	name: "staten island",
 	house1: false,
 	house2: false,
-	house3: false
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var bronx = {
+	name: "bronx",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var brooklyn = {
+	name: "brooklyn",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var queens = {
+	name: "queens",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var manhattan = {
+	name: "manhattan",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var washingtonSquarePark = {
+	name: "washington square park",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var batteryPark = {
+	name: "battery park",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var centralPark = {
+	name: "central park",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var chinatown = {
+	name: "chinatown",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var littleItaly = {
+	name: "little italy",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var greenwichVillage = {
+	name: "greenwich viullage",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var timesSquare = {
+	name: "times square",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var wallStreet = {
+	name: "wall street",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var broadway = {
+	name: "broadway",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var newYorkHarbor = {
+	name: "new york harbor",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var hudsonRiver = {
+	name: "hudson river",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var eastRiver = {
+	name: "east river",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var empireStateBuilding = {
+	name: "empire state building",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var statueOfLiberty = {
+	name: "statue of liberty",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var newYorkPublicLibrary = {
+	name: "new york public library",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var fifthAvenue = {
+	name: "fifth avenue",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
+};
+
+var parkAvenue = {
+	name: "park avenuye",
+	house1: false,
+	house2: false,
+	house3: false,
+	isOwned: false,
+	isMortgaged: false
 };
 
 var die1 = 0;
@@ -40,14 +232,23 @@ var die2 = 0;
 var doublesRolled = 0;
 var oldElem = null; //this is the previous space the player piece was on
 var newElem = null; //this is the new space the player piece will be put on
-var propertySpaces = ["null", "staten island", "null", "bronx",
+var propertySpaces = [null, statenIsland, null, bronx,
+null, null, brooklyn, queens, null, manhattan,
+null, washingtonSquarePark, null, batteryPark, centralPark, 
+null, chinatown, null, littleItaly, greenwichVillage, null,
+timesSquare, null, wallStreet, broadway, null,
+newYorkHarbor, hudsonRiver, null, eastRiver, null,
+empireStateBuilding, statueOfLiberty, null, newYorkPublicLibrary,
+null, null, fifthAvenue, null, parkAvenue];
+
+/*var propertySpaces = ["null", "statenIsland", "null", "bronx",
 "null", "null", "brooklyn", "queens", "null", "manhattan",
-"null", "washington square park", "null", "battery park", "central park", 
-"null", "chinatown", "null", "little italy", "greenwich village", "null",
-"times square", "null", "wall street", "broadway", "null",
-"new york harbor", "hudson river", "null", "east river", "null",
-"empire state building", "statue of liberty", "null", "new york public library",
-"null", "null", "fifth avenue", "null", "park avenue"];
+"null", "washingtonSquarePark", "null", "batteryPark", "centralPark", 
+"null", "chinatown", "null", "littleItaly", "greenwichVillage", "null",
+"timesSquare", "null", "wallStreet", "broadway", "null",
+"newYorkHarbor", "hudsonRiver", "null", "eastRiver", "null",
+"empireStateBuilding", "statueOfLiberty", "null", "newYorkPublicLibrary",
+"null", "null", "fifthAvenue", "null", "parkAvenue"];*/
 
 //when user clicks on div, open the popup
 function myFunction() {
@@ -95,9 +296,11 @@ function updatePosition() {
 						/*player1.isTurn = false;
 						player2.isTurn = true;*/
 					} else {
+						buyProperty();
 						alert("You rolled doubles! Roll again.");
 					}
 				} else {
+					buyProperty();
 					player1.isTurn = false;
 					player2.isTurn = true;
 					doublesRolled = 0;
@@ -135,9 +338,11 @@ function updatePosition() {
 						/*player2.isTurn = false;
 						player3.isTurn = true;*/
 					} else {
+						buyProperty();
 						alert("You rolled doubles! Roll again.");
 					}
 				} else {
+					buyProperty();
 					player2.isTurn = false;
 					player3.isTurn = true;
 					doublesRolled = 0;
@@ -175,9 +380,11 @@ function updatePosition() {
 						/*player3.isTurn = false;
 						player4.isTurn = true;*/
 					} else {
+						buyProperty();
 						alert("You rolled doubles! Roll again.");
 					}
 				} else {
+					buyProperty();
 					player3.isTurn = false;
 					player4.isTurn = true;
 					doublesRolled = 0;
@@ -215,9 +422,11 @@ function updatePosition() {
 						/*player4.isTurn = false;
 						player1.isTurn = true;*/
 					} else {
+						buyProperty();
 						alert("You rolled doubles! Roll again.");
 					}
 				} else {
+					buyProperty();
 					player4.isTurn = false;
 					player1.isTurn = true;
 					doublesRolled = 0;
@@ -351,8 +560,42 @@ function buyProperty(){
 	var elem = document.getElementById("cell3");
 	var name = elem.getAttribute('name');
 	alert(name);
-	var elem = document.getElementById("log");
-	elem.innerHTML = "Do you want to purchase " + propertySpaces[1] + "?";
+	
+	var log = document.getElementById("log");
+	var box = document.getElementById("selectBox");
+	var choice; //will equal yes or no
+	box.style.display = "inline";
+	var select = document.getElementById("tradeSelect");
+	if(player1.isTurn === true){
+		//alert("hi");
+		if(propertySpaces[player1.position].isOwned === false){
+			log.innerHTML = "Do you want to purchase " + propertySpaces[player1.position].name + "?";
+			var yes = document.createElement('option');
+			yes.text = "yes";
+			select.add(yes, 0);
+			var no = document.createElement('option');
+			no.text = "no";
+			select.add(no, 0);
+			
+			document.getElementById("submitButton").addEventListener("click", function(){
+				var e = document.getElementById("tradeSelect");
+				choice = e.options[e.selectedIndex].text;
+				alert(choice);
+			});
+		}
+		
+		
+	}
+	else if(player2.isTurn === true && propertySpaces[player1.position].isOwned === false){
+		elem.innerHTML = "Do you want to purchase " + propertySpaces[player2.position] + "?";
+	}
+	else if(player3.isTurn === true){
+		elem.innerHTML = "Do you want to purchase " + propertySpaces[player3.position] + "?";
+	}
+	else if(player4.isTurn === true){
+		elem.innerHTML = "Do you want to purchase " + propertySpaces[player4.position] + "?";
+	}
+	
 }
 
 function askTrade(){
@@ -384,6 +627,8 @@ function askTrade(){
 		pOption = elem.options[elem.selectedIndex].text;
 		alert(propOption + " to " + pOption);
 	});
+	
+	
 }
 	
 
