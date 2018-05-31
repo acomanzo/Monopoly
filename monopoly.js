@@ -557,31 +557,33 @@ function getOutOfJail() {
 }
 
 function buyProperty(){
-	//var elem = document.getElementById("cell" + player1.position);
+	/* //var elem = document.getElementById("cell" + player1.position);
 	var elem = document.getElementById("cell3");
 	var name = elem.getAttribute('name');
-	alert(name);
+	alert(name);*/
 	
 	var log = document.getElementById("log");
 	var box = document.getElementById("selectBox");
 	var choice; //will equal yes or no
 	box.style.display = "inline";
 	var select = document.getElementById("firstDropdown");
+	
+	var select = document.getElementById("firstDropdown");
+	for(i = 0; i < player1.properties.length; i++) { //this removes the properties from the first dropdown
+		var option = document.createElement('option');
+		option.text = player1.properties[i];
+		select.remove(option, 0);
+	}
+	select = document.getElementById("secondDropdown");
+	for(j = 1; j <= 4; j++){ //this removes the player names from the next dropdown
+		var option = document.createElement('option');
+		option.text = "Player " + j;
+		select.remove(option, 0);
+	}
 	if(player1.isTurn === true){
 		//alert("hi");
 		if(propertySpaces[player1.position].isOwned === false){
-			var select = document.getElementById("firstDropdown");
-			for(i = 0; i < player1.properties.length; i++) { //this removes the properties from the first dropdown
-				var option = document.createElement('option');
-				option.text = player1.properties[i];
-				select.remove(option, 0);
-			}
-			select = document.getElementById("firstDropdown");
-			for(j = 1; j <= 4; j++){ //this removes the player names from the next dropdown
-				var option = document.createElement('option');
-				option.text = "Player " + j;
-				select.remove(option, 0);
-			}
+			
 		
 			select = document.getElementById("firstDropdown");
 			log.innerHTML = "Do you want to purchase " + propertySpaces[player1.position].name + "?";
@@ -595,7 +597,7 @@ function buyProperty(){
 			document.getElementById("submitButton").addEventListener("click", function(){
 				var e = document.getElementById("firstDropdown");
 				choice = e.options[e.selectedIndex].text;
-				alert(choice);
+				//alert(choice);
 				if(choice === "yes"){
 					player1.properties.push(propertySpaces[player1.position.name]);
 					log.innerHTML = "Player 1 bought " + propertySpaces[player1.position].name + ". Resume with your turn.";
@@ -609,18 +611,31 @@ function buyProperty(){
 		
 	}
 	else if(player2.isTurn === true && propertySpaces[player1.position].isOwned === false){
-		elem.innerHTML = "Do you want to purchase " + propertySpaces[player2.position] + "?";
+		log.innerHTML = "Do you want to purchase " + propertySpaces[player2.position] + "?";
 	}
 	else if(player3.isTurn === true){
-		elem.innerHTML = "Do you want to purchase " + propertySpaces[player3.position] + "?";
+		log.innerHTML = "Do you want to purchase " + propertySpaces[player3.position] + "?";
 	}
 	else if(player4.isTurn === true){
-		elem.innerHTML = "Do you want to purchase " + propertySpaces[player4.position] + "?";
+		log.innerHTML = "Do you want to purchase " + propertySpaces[player4.position] + "?";
 	}
 	
 }
 
 function askTrade(){
+	var select = document.getElementById("firstDropdown");
+	for(i = 0; i < player1.properties.length; i++) { //this removes the properties from the first dropdown
+		var option = document.createElement('option');
+		option.text = player1.properties[i];
+		select.remove(option, 0);
+	}
+	select = document.getElementById("secondDropdown");
+	for(j = 1; j <= 4; j++){ //this removes the player names from the next dropdown
+		var option = document.createElement('option');
+		option.text = "Player " + j;
+		select.remove(option, 0);
+	}
+	
 	var propOption;
 	var pOption;
 	var elem = document.getElementById("selectBox");
@@ -654,7 +669,34 @@ function askTrade(){
 }
 	
 function showBuy(){
+	var elem;
+	var yesNo;
+	var select = document.getElementById("firstDropdown");
+	for(i = 0; i < player1.properties.length; i++) { //this removes the properties from the first dropdown
+		var option = document.createElement('option');
+		option.text = player1.properties[i];
+		select.remove(option, 0);
+	}
+	var option = document.createElement('option');
+	option.text = "yes";
+	select.add(option, 0);
+	var option = document.createElement('option');
+	option.text = "no";
+	select.add(option, 0);
 	
+	select = document.getElementById("secondDropdown");
+	for(j = 1; j <= 4; j++){ //this removes the player names from the next dropdown
+		var option = document.createElement('option');
+		option.text = "Player " + j;
+		select.remove(option, 0);
+	}
+	
+	document.getElementById("submitButton").addEventListener("click", function(){
+		elem = document.getElementById("firstDropdown");
+		yesNo = elem.options[elem.selectedIndex].text;
+		alert(yesNo);
+		
+	});
 }	
 
 var poop = 1;
