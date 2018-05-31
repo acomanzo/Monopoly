@@ -1,5 +1,30 @@
 /*styling for monopoly*/
 	
+	.buy-button:hover{
+		background-color: #FFD800;
+		box-shadow: 0px 0px 10px grey;
+		-webkit-animation: trade-hover 1s;
+		cursor: pointer;
+		color: white;
+		border: 2px solid black;
+		border-radius: 5px;
+		transform: scale(1.01,1.01);
+		-webkit-transition: all 0.3s ease-in-out;
+	}
+	
+	.buy-button{
+		background-color: #ECDE8F;
+		color: grey;
+		margin: 5px;
+		height: 10%;
+		display: inline-block;
+		border: 2px solid grey;
+		width: 20%;
+		border-radius: 5px;
+		transition: all 0.3s ease-in-out;
+		/*position: relative;*/
+	}
+	
 	.log{
 		height: 600px;
 		width: 300px;
@@ -45,13 +70,14 @@
 	.trade-button {
 		/*box-shadow: 0 1px 2px grey;*/
 		background-color: #A99DD0;
-		width: 30%;
+		width: 20%;
 		height: 10%;
 		margin: 5px;
 		color: grey; 
 		border: 2px solid grey;
 		border-radius: 5px;
 		transition: all 0.3s ease-in-out; /*all instead of doing a transtion line for each*/
+		display: inline-block;
 	}
 	
 	.hotel {
