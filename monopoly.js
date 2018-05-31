@@ -653,6 +653,9 @@ function askTrade(){
 	
 }
 	
+function showBuy(){
+	
+}	
 
 var poop = 1;
 function test() {
