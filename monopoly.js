@@ -927,6 +927,56 @@ function showBuy(){
 		
 		
 	});*/
+	
+	document.getElementById("submitButton").addEventListener("click", function(){
+		var e = document.getElementById("firstDropdown");
+		choice = e.options[e.selectedIndex].text;
+		//alert(choice);
+		if(player1.isTurn === true){
+			if(choice === "yes"){
+				propertySpaces[player1.position].isOwned = true;
+				player1.money -= propertySpaces[player1.position].costToBuy;
+				player1.properties.push(propertySpaces[player1.position].name);
+				log.innerHTML = "Player 1 bought " + propertySpaces[player1.position].name + ". Resume with your turn.";
+			}
+			else if(choice === "no"){
+				log.innerHTML = "Resume with your turn.";
+			}
+		}
+		else if(player2.isTurn === true){
+			if(choice === "yes"){
+				propertySpaces[player2.position].isOwned = true;
+				player2.money -= propertySpaces[player2.position].costToBuy;
+				player2.properties.push(propertySpaces[player2.position].name);
+				log.innerHTML = "Player 2 bought " + propertySpaces[player2.position].name + ". Resume with your turn.";
+			}
+			else if(choice === "no"){
+				log.innerHTML = "Resume with your turn.";
+			}
+		}
+		else if(player3.isTurn === true){
+			if(choice === "yes"){
+				propertySpaces[player3.position].isOwned = true;
+				player3.money -= propertySpaces[player3.position].costToBuy;
+				player3.properties.push(propertySpaces[player3.position].name);
+				log.innerHTML = "Player 3 bought " + propertySpaces[player3.position].name + ". Resume with your turn.";
+			}
+			else if(choice === "no"){
+				log.innerHTML = "Resume with your turn.";
+			}
+		}
+		else if(player4.isTurn === true){
+			if(choice === "yes"){
+				propertySpaces[player4.position].isOwned = true;
+				player4.money -= propertySpaces[player4.position].costToBuy;
+				player4.properties.push(propertySpaces[player4.position].name);
+				log.innerHTML = "Player 4 bought " + propertySpaces[player4.position].name + ". Resume with your turn.";
+			}
+			else if(choice === "no"){
+				log.innerHTML = "Resume with your turn.";
+			}
+		}
+	});
 }	
 
 function switchTurn(){
@@ -1229,12 +1279,15 @@ function buyStudio(){
 		option.text = "Player " + j;
 		select.remove(option, 0);
 	}
+	//console.log(player1.properties[0]);
 	
 	select = document.getElementById("firstDropdown");
 	if(player1.isTurn === true){
+		console.log(player1.properties[0]);
 		for(k = 0; k < player1.properties.length; k++){
 			var option = document.createElement('option');
 			option.text = player1.properties[i];
+			//console.log(player1.properties[i]);
 			select.add(option, 0);
 		}
 	}
