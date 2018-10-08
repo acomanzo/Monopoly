@@ -1,1027 +1,1387 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <title>Monopoly</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.6/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js"></script>
-  <script src="monopoly.js"></script> 
-  <link rel="stylesheet" class="css/text" href="monopoly.css"></link>
-  <style>
-  	/*div{
-  		border:2px solid SlateBlue;
-  	}*/
-	
-  </style>
-  
+	<title>Monopoly V2</title>
+	<meta charset="utf-8">
+ 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="monopolyV2.css">
+ 	<!--<style>
+
+	@import url('https://fonts.googleapis.com/css?family=Song+Myung');
+
+		/*html {
+			position: fixed;
+			min-width: 100vw;
+		}*/
+		body {
+			margin: 0; /*this, combined with 'height: 100vh;' and 'width: 100vw;' sizes the
+									file to the entire window size, and gets rid of any browser default margins*/
+			/*text-align: center;*/
+			/*font-size: 10pt;*/
+			background-color: rgb(255, 255, 244);
+			/*************
+			Stole this color from Tracksmith's website :))
+			*************/
+			font-family: 'Song Myung', serif;
+		}
+ 		.grid-container {
+ 			display: grid;
+ 			/*grid-template-columns: auto auto auto auto auto auto auto auto auto auto auto;
+			grid-template-rows: repeat(11, auto);*/
+			grid-template-columns: repeat(11, 100px);
+			grid-template-rows: repeat(11, 100px);
+ 			/*grid-gap: 1%;*/
+ 			background-color: #A8FFDE;
+			height: 1100px;
+			width: 1100px;
+			/*height: 90vh;
+ 			width: 90vw;*/
+			border: solid 2px black;
+ 		}
+ 		.grid-container > div {
+			border: solid 1px black;
+			text-align: center;
+ 		}
+
+		.middle {
+			grid-column-start: 2;
+			grid-column-end: 11;
+			grid-row-start: 2;
+			grid-row-end: 11;
+			background-color: #A8FFDE;
+
+		}
+
+		#log-container {
+			margin-left: 50px;
+			margin-right: 50px;
+			width: 800px;
+			display: grid;
+			grid-template-columns: 250px 300px 250px;
+			grid-template-rows: 100px 100px;
+			border: 1px solid black;
+			/*grid-column-gap: 5px;
+			grid-row-gap: 5px;*/
+			position: sticky;
+			position: -webkit-sticky;
+			top: 0;
+		}
+
+		#log-container div {
+			margin: 2px;
+		}
+
+		#log {
+			/*margin: 5px;*/
+			border: 3px double brown;
+			/*width: 500px;
+			height: 200px;*/
+			background-color: rgb(255, 255, 244);
+			/*display: inline-block;*/
+			/*position: sticky;
+			position: -webkit-sticky;
+			top: 0;*/
+			grid-column-start: 2;
+			grid-column-end: 3;
+			grid-row-start: 1;
+			grid-row-end: 3;
+			overflow: auto;
+		}
+
+		#progress-container {
+			margin: 0; /* this should override the margin: 2px; in #log-container > div but it doesnt */
+			width: 100%;
+			height: 5px;
+			background: #ccc;
+		}
+
+		#progress-bar {
+			margin: 0; /* this should override the margin: 2px; in #log-container > div but it doesnt */
+  		height: 5px;
+  		background: #4caf50;
+  		width: 0%;
+			position: sticky;
+			position: -webkit-sticky;
+			top: 0;
+		}
+
+		#diceBtn {
+			/*margin: 5px;*/
+			/*height: 75px;
+			width: 150px;*/
+			background-color: white;
+			/*display: inline-block;*/
+			border: 1px solid black;
+			/*position: sticky;
+			position: -webkit-sticky;
+			top: 0;*/
+			cursor: pointer;
+			transition: 0.3s
+		}
+
+		/*#diceBtn:hover {
+			background-color: black;
+			color: white;
+		}*/
+
+		#tradeBtn {
+			background-color: purple;
+			cursor: pointer;
+			border: 1px solid purple;
+			transition: 0.3s
+		}
+
+		/*#tradeBtn:hover {
+			background-color: white;
+			color: purple;
+		}*/
+
+		#buyBtn {
+			background-color: green;
+			cursor: pointer;
+			border: 1px solid green;
+			transition: 0.3s;
+		}
+
+		/*#buyBtn:hover {
+			background-color: white;
+			color: green;
+		}*/
+
+		#endBtn {
+			background-color: red;
+			cursor: pointer;
+			border: 1px solid red;
+			transition: 0.3s;
+		}
+
+		/*#endBtn:hover {
+			background-color: white;
+			color: red;
+		}*/
+
+		.property-container {
+			border: solid 2px black;
+			height: 20%;
+			text-align: center;
+			/**********
+			method i tried to make the 'pieces' vertically aligned:
+			display: flex;
+			align-items: center;
+			************/
+		}
+
+		.house {
+			margin: 2px;
+			background-color: black;
+			height: 10px;
+			width: 10px;
+			color: white;
+			display: inline-block;
+			position: relative;
+			/**********
+			method i tried to make the 'pieces' vertically aligned:
+			vertical-align: middle;
+			************/
+			top: 3px; /*I do this to vertically align the 'pieces' because I don't need
+									to make a fluid site*/
+		}
+
+		.brownstone {
+			margin: 2px;
+			background-color: black;
+			height: 10px;
+			width: 70px;
+			color: white;
+			display: inline-block;
+			position: relative;
+			top: 3px;
+		}
+
+		p {
+			padding: 0;
+			margin: 0;
+		}
+
+		.community-chest {
+			font-size: 10pt;
+		}
+
+		.dropdown {
+			position: relative;
+			/*display: inline-block;*/
+		}
+
+		.dropdown-content {
+			display: none;
+			position: absolute;
+			background-color: #f9f9f9;
+			width: 170px;
+			box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+			padding: 12px 16px;
+			z-index: 1;
+			background-color: lightgray;
+			border: solid 1px #cc9900;
+			border-radius: 30px;
+			font-size: 12px;
+		}
+
+		/*.dropdown:hover .dropdown-content {
+			display: block;
+		}*/
+
+		.dashboard {
+			height: 100vh;
+			width: 0;
+			position: fixed;
+			z-index: 3;
+			top: 0;
+			right: 0;
+			background-color: rgba(0, 0, 0, 0.7);
+			overflow-x: hidden;
+			transition: 0.5s;
+			padding-top: 60px;
+		}
+
+		.dashboard p {
+			padding: 8px 8px 8px 125px;
+			text-decoration: none;
+			font-size: 25px;
+			color: green;
+			display: block;
+			transition: 0.3s;
+			cursor: pointer;
+		}
+
+		.dashboard p:hover{
+			color: yellow;
+		}
+
+		.dashboard a {
+			padding: 8px 8px 8px 125px;
+			text-decoration: none;
+			font-size: 25px;
+			color: green;
+			display: block;
+			transition: 0.3s;
+			cursor: pointer;
+		}
+
+		.dashboard a:hover{
+			color: yellow;
+		}
+
+		.dashboard .closebtn {
+			position: absolute;
+			top: 0;
+			font-size: 36px;
+			padding-left: 32px;
+		}
+
+		.openBtn {
+			cursor: pointer;
+			position: absolute;
+			right: 0;
+			top: 0;
+			position: fixed;
+			background-color: black;
+			color: white;
+			z-index: 1;
+			padding: 10px;
+			width: 70px;
+			transition: 0.2s;
+		}
+
+		@media screen and (max-height: 450px){
+			.dashboard {padding-top: 15px;}
+			.dashboard p {font-size: 18px;}
+			.dashboard a {font-size: 18px;}
+		}
+
+		.player-holder {
+			bottom: 0;
+			position: absolute;
+			/*border: 2px solid black;*/
+			width: auto;
+		}
+
+		.player {
+			margin: 2px;
+			background-color: black;
+			height: 10px;
+			width: 10px;
+			color: white;
+			display: inline-block;
+			position: relative;
+			top: 3px;
+		}
+
+		#buy-menu {
+			width: 400px;
+			height: 0;
+			background-color: rgb(255, 255, 244);
+			z-index: 1;
+			left: 350px;
+			position: fixed;
+			top: 0;
+			box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+			border: dotted 3px green;
+			display: none;
+			padding: 10px;
+		}
+
+		#buy-menu .closebtn {
+			font-size: 25px;
+			transition: 0.3s;
+			width: 25px;
+		}
+
+		#buy-menu .closebtn:hover {
+			color: green;
+			cursor: pointer;
+		}
+
+		#trade-menu {
+			width: 400px;
+			height: 0;
+			background-color: rgb(255, 255, 244);
+			z-index: 2;
+			left: 350px;
+			position: fixed;
+			top: 0;
+			box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+			border: dotted 3px purple;
+			display: none;
+			padding: 10px;
+		}
+
+		#trade-menu .closebtn {
+			font-size: 25px;
+			transition: 0.3s;
+			width: 25px;
+		}
+
+		#trade-menu .closebtn:hover {
+			color: purple;
+			cursor: pointer;
+		}
+
+		#jail {
+			background-color: orange;
+			border: solid 1px black;
+			position: absolute;
+			width: 80px;
+			height: 65px;
+			right: 0;
+			top: 0;
+		}
+
+		#get-out-of-jail-prompt {
+			display: grid;
+			grid-template-columns: 200px 200px;
+			grid-template-rows: 100px 100px;
+			border: 3px dotted orange;
+			width: 400px;
+			position: fixed;
+			z-index: 1;
+			background-color: rgb(255, 255, 244);
+			left: 350px;
+			top: 0;
+			box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+			display: none;
+		}
+
+		#get-out-of-jail-prompt > div {
+			border: solid 1px black;
+			background-color: orange;
+			padding-top: 40px;
+			text-align: center;
+			cursor: pointer;
+			margin: 4px;
+		}
+
+		#get-out-of-jail-prompt > p {
+			grid-column-start: 1;
+			grid-column-end: 3;
+			text-align: center;
+			padding: 30px;
+		}
+
+		.menu-header {
+			margin: 0;
+			text-align: center;
+			padding: 10px;
+			cursor: grab;
+			background-color: #88E7FF;
+		}
+		.menu-header:active {
+			cursor: grabbing;
+		}
+
+		#player-window {
+			border: 3px dotted brown;
+			background-color: rgb(255, 255, 244);
+			left: 350px;
+			top: 0;
+			box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+			width: 400px;
+			position: fixed;
+			z-index: 1;
+			display: none;
+			overflow: auto;
+		}
+
+		#player-window > .closebtn {
+			/*position: absolute;*/
+			top: 0;
+			font-size: 26px;
+			padding: 10px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+
+		#player-window > .closebtn:hover {
+			color: brown;
+		}
+
+		#house-rules {
+			border: 3px dotted #88E7FF;
+			background-color: rgb(255, 255, 244);
+			left: 250px;
+			top: 0;
+			box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+			width: 600px;
+			position: fixed;
+			z-index: 1;
+			display: none;
+		}
+
+		#house-rules > .closebtn {
+			position: absolute; /*this makes it inline with 'HOUSE RULES'*/
+			top: 0;
+			font-size: 26px;
+			padding: 5px 0 0 5px;
+			cursor: pointer;
+			transition: 0.3s;
+		}
+
+		#house-rules > .closebtn:hover {
+			color: #88E7FF;
+		}
+
+ 	</style>-->
+	<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js">
+	</script>
+	<script>
+	function openDash() {
+		document.getElementById("myDash").style.width = "250px";
+		document.getElementById("main").style.width = "1000px";
+		document.getElementById("main").style.gridTemplateColumns =
+			"90.9px 90.9px 90.9px 90.9px 90.9px 90.9px 90.9px 90.9px 90.9px 90.9px 90.9px";
+		document.getElementById("openBtn").style.padding = "0";
+		document.getElementById("openBtn").style.width = "0";
+
+		document.getElementById("log-container").style.width = "700px";
+		document.getElementById("log-container").style.gridTemplateColumns =
+			"233.3px 233.3px 233.3px";
+	}
+
+	function closeDash() {
+		document.getElementById("myDash").style.width = "0";
+		document.getElementById("main").style.marginLeft = "0";
+		document.getElementById("main").style.width = "1100px";
+		document.getElementById("main").style.gridTemplateColumns =
+			"100px 100px 100px 100px 100px 100px 100px 100px 100px 100px 100px";
+		document.getElementById("openBtn").style.padding = "10px";
+		document.getElementById("openBtn").style.width = "70px";
+
+		document.getElementById("log-container").style.width = "800px";
+		document.getElementById("log-container").style.gridTemplateColumns =
+			"250px 300px 250px";
+	}
+	</script>
 </head>
+
 <body>
-<!-- <body onLoad = "toggleOnLoad()"> -->
-
-<div class = "header">
-	<h1><font color = "SlateBlue">Monopoly</font></h1>
+<div class="dashboard" id="myDash">
+	<p class="closebtn" onclick="closeDash()">&times;</p>
+	<a href="https://www.hasbro.com/common/instruct/monins.pdf" target="_blank">Rules</a>
+	<p onclick="showHouseRules()">House Rules</p>
+	<!--<a href="#">About</a>
+	<a href="#">Options</a>-->
+	<!--<p id="bank">Bank</p>-->
+	<!--<p id="test" data-value="imtesting">Test</p>-->
+	<p id="player-one" data-value="player1" onclick="displayOwnedProperties(this)">Player 1</p>
+	<p id="player-two" data-value="player2" onclick="displayOwnedProperties(this)">Player 2</p>
+	<p id="player-three" data-value="player3" onclick="displayOwnedProperties(this)">Player 3</p>
+	<p id="player-four" data-value="player4" onclick="displayOwnedProperties(this)">Player 4</p>
+	<!-- only certain tags can use the value attribute. You have to use the
+			global attribute data-* -->
 </div>
-<div class = "topnav">
-	<a href = "#">Link</a>
-</div>
-<div class = "row" style = "padding: 20px;">
-		<!--space inbewtween-->
-</div>
-
-<div class = "container-fluid" style = "background-color: #ddd;"><!--start bootstrap(?)-->
-	
-	<div class = "row" style = "height: 150px;">
-		<!--use div id w/ JS. ID must be unique; classes aren't unique-->
-		<div id = "freeparking" class = "col-sm-1 sqr" id = "cell20">FREE PARKING
-			<div class="dropdown">
-            <span>Hover over me!</span>
-            <div class="dropdown-content">
-              <p>Hover over the other spaces to see their information!</p>
-            </div>
-          </div>
-          <div id = "cell20_1" ></div> <!-- 'cell' + cell number + _ + player number -->
-			<div id = "cell20_2"></div>
-			<div id = "cell20_3"></div>
-			<div id = "cell20_4"></div>
-		</div>
-		<!--I styled each div individually before using class = "sqr"-->
-		<!--<div class = "col-sm-1" style="border:2px solid #cc9900; text-align: center; font-family: Comic Sans MS, cursive, sans-serif"><p style = "background-color: red">Building</p></div>-->
-		<div class = "col-sm-1 sqr" id = "cell21" name = "time square">
-			<div class = "housePlot" style = "background-color: red;">
-				<div id = "cell21_h1"></div><div id = "cell21_h2"></div><div id = "cell21_h3"></div>
-				<!-- <div id = "cell21_h1" class = "house"></div><div id = "cell21_h2" class = "house"></div><div id = "cell21_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Times Square</span>
-			<p>Price $220</p>
-				<div id = "timesSquare" class = "dropdown-content" style = "background-color: #B1FF8C";>
-					<div style = "background-color: red";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						TIMES SQUARE</p>
-					</div>
-					<p>RENT $18</br>
-					With 1 Studio  $90.</br>
-					With 2 Studios 250.</br>
-					With 3 Studios 700.</br>
-					With 4 Studios 875.</br>
-					With BROWNSTONE $1050.</br>
-					Mortgage Value $110.</br>
-					Studio cost $150. each</br>
-					Brownstones, $150. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell21_1"></div>
-			<div id = "cell21_2"></div>
-			<div id = "cell21_3"></div>
-			<div id = "cell21_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell22" name = "null">
-			<div class = "dropdown">
-			<span>Chance</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell22_1"></div>
-			<div id = "cell22_2"></div>
-			<div id = "cell22_3"></div>
-			<div id = "cell22_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell23" name = "wall street">
-			<div class = "housePlot" style = "background-color: red;">
-				<div id = "cell23_h1"></div><div id = "cell23_h2"></div><div id = "cell23_h3"></div>
-				<!-- <div id = "cell23_h1" class = "house"></div><div id = "cell23_h2" class = "house"></div><div id = "cell23_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Wall Street</span>
-			<p>Price $240</p>
-				<div id = "wallStreet" class = "dropdown-content" style = "background-color: #FAFF8C";>
-					<div style = "background-color: red";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						WALL STREET</p>
-					</div>
-					<p>RENT $20</br>
-					With 1 Studio  $100.</br>
-					With 2 Studios 300.</br>
-					With 3 Studios 750.</br>
-					With 4 Studios 925.</br>
-					With BROWNSTONE $1100.</br>
-					Mortgage Value $120.</br>
-					Studio cost $150. each</br>
-					Brownstones, $150. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell23_1"></div>
-			<div id = "cell23_2"></div>
-			<div id = "cell23_3"></div>
-			<div id = "cell23_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell24" name = "broadway">
-			<div class = "housePlot" style = "background-color: red;">
-				<div id = "cell24_h1"></div><div id = "cell24_h2"></div><div id = "cell24_h3"></div>
-				<!-- <div id = "cell24_h1" class = "house"></div><div id = "cell24_h2" class = "house"></div><div id = "cell24_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Broadway</span>
-			<p>Price $220</p>
-				<div id = "broadway" class = "dropdown-content" style = "background-color: #FF8C8C";>
-					<div style = "background-color: red";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						BROADWAY</p>
-					</div>
-					<p>RENT $18</br>
-					With 1 Studio  $90.</br>
-					With 2 Studios 250.</br>
-					With 3 Studios 700.</br>
-					With 4 Studios 875.</br>
-					With BROWNSTONE $1050.</br>
-					Mortgage Value $110.</br>
-					Studio cost $150. each</br>
-					Brownstones, $150. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell24_1"></div>
-			<div id = "cell24_2"></div>
-			<div id = "cell24_3"></div>
-			<div id = "cell24_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell25" name = "null">
-			<div class = "dropdown">
-			<span>"N" Train</span>
-			<p>Price $200</p>
-				<div id = "ntrain" class = "dropdown-content" style = "background-color: #8C9CFF";>
-					<div>
-						<p style = "font-weight: bold;">"N" TRAIN</br></p>
-					</div>
-					<p>RENT $25</br>
-					If 2 Trains are owned 50.</br>
-					If 3 100.</br>
-					If 4 200.</br>
-					Mortgage Value $100.</br></p>
-				</div>
-			</div>
-			<div id = "cell25_1"></div>
-			<div id = "cell25_2"></div>
-			<div id = "cell25_3"></div>
-			<div id = "cell25_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell26" name = "new york harbor">
-			<div class = "housePlot" style = "background-color: yellow;">
-				<div id = "cell26_h1"></div><div id = "cell26_h2"></div><div id = "cell26_h3"></div>
-				<!-- <div id = "cell26_h1" class = "house"></div><div id = "cell26_h2" class = "house"></div><div id = "cell26_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>New York Harbor</span>
-			<p>Price $280</p>
-				<div id = "newyorkHarbor" class = "dropdown-content">
-					<div style = "background-color: yellow";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						NEW YORK HARBOR</p>
-					</div>
-					<p>RENT $24</br>
-					With 1 Studio  $120.</br>
-					With 2 Studios 360.</br>
-					With 3 Studios 850.</br>
-					With 4 Studios 1025.</br>
-					With BROWNSTONE $1200.</br>
-					Mortgage Value $140.</br>
-					Studio cost $150. each</br>
-					Brownstones, $150. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell26_1"></div>
-			<div id = "cell26_2"></div>
-			<div id = "cell26_3"></div>
-			<div id = "cell26_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell27" name = "hudson river">
-			<div class = "housePlot" style = "background-color: yellow;">
-				<div id = "cell27_h1"></div><div id = "cell27_h2"></div><div id = "cell27_h3"></div>
-				<!-- <div id = "cell27_h1" class = "house"></div><div id = "cell27_h2" class = "house"></div><div id = "cell27_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Hudson River</span>
-			<p>Price $260</p>
-				<div id = "hudsonRiver" class = "dropdown-content">
-					<div style = "background-color: yellow";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						HUDSON RIVER</p>
-					</div>
-					<p>RENT $22</br>
-					With 1 Studio  $110.</br>
-					With 2 Studios 330.</br>
-					With 3 Studios 800.</br>
-					With 4 Studios 975.</br>
-					With BROWNSTONE $1150.</br>
-					Mortgage Value $130.</br>
-					Studio cost $150. each</br>
-					Brownstones, $150. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell27_1"></div>
-			<div id = "cell27_2"></div>
-			<div id = "cell27_3"></div>
-			<div id = "cell27_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell28" name = "null">
-			<div class = "dropdown">
-			<span>Water Works</span>
-			<p>Price $150</p>
-				<div id = "waterWorks" class = "dropdown-content">
-					<div>
-						<p style = "font-weight: bold;">WATER WORKS</br></p>
-					</div>
-					<p>If one "Utility" is owned rent is 4 times amount shown on dice.</br>
-					If both "Utilities" are owned rent is 10 times amount shown on dice.</br>
-					Mortgage Value $75.</p>
-				</div>
-			</div>
-			<div id = "cell28_1"></div>
-			<div id = "cell28_2"></div>
-			<div id = "cell28_3"></div>
-			<div id = "cell28_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell29" name = "east river">
-			<div class = "housePlot" style = "background-color: yellow;">
-				<div id = "cell29_h1"></div><div id = "cell29_h2"></div><div id = "cell29_h3"></div>
-				<!-- <div id = "cell29_h1" class = "house"></div><div id = "cell29_h2" class = "house"></div><div id = "cell29_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>East River</span>
-			<p>Price $260</p>
-				<div id = "eastRiver" class = "dropdown-content">
-					<div style = "background-color: yellow";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						EAST RIVER</p>
-					</div>
-					<p>RENT $22</br>
-					With 1 Studio  $110.</br>
-					With 2 Studios 330.</br>
-					With 3 Studios 800.</br>
-					With 4 Studios 975.</br>
-					With BROWNSTONE $1150.</br>
-					Mortgage Value $130.</br>
-					Studio cost $150. each</br>
-					Brownstones, $150. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell29_1"></div>
-			<div id = "cell29_2"></div>
-			<div id = "cell29_3"></div>
-			<div id = "cell29_4"></div>
-		</div>
-		<div class = "col-sm-2 sqr" id = "cell30" name = "null">
-			<div class = "dropdown">
-			<span>GO TO JAIL</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell30_1"></div>
-			<div id = "cell30_2"></div>
-			<div id = "cell30_3"></div>
-			<div id = "cell30_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell19" name = "greenwich village">
-			<div class = "housePlot" style = "background-color: orange;">
-				<div id = "cell19_h1"></div><div id = "cell19_h2"></div><div id = "cell19_h3"></div>
-				<!-- <div id = "cell19_h1" class = "house"></div><div id = "cell19_h2" class = "house"></div><div id = "cell19_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Greenwich Village</span>
-			<p>Price $200</p>
-				<div id = "greenwichVillage" class = "dropdown-content">
-					<div style = "background-color: orange";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						GREENWICH VILLAGE</p>
-					</div>
-					<p>RENT $16</br>
-					With 1 Studio  $80.</br>
-					With 2 Studios 220.</br>
-					With 3 Studios 600.</br>
-					With 4 Studios 800.</br>
-					With BROWNSTONE $1000.</br>
-					Mortgage Value $100.</br>
-					Studio cost $100. each</br>
-					Brownstones, $100. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell19_1"></div>
-			<div id = "cell19_2"></div>
-			<div id = "cell19_3"></div>
-			<div id = "cell19_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell31" name = "empire state building">
-			<div class = "housePlot" style = "background-color: green;">
-				<div id = "cell31_h1"></div><div id = "cell31_h2"></div><div id = "cell31_h3"></div>
-				<!-- <div id = "cell31_h1" class = "house"></div><div id = "cell31_h2" class = "house"></div><div id = "cell31_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Empire State Building</span>
-			<p>Price $320</p>
-				<div id = "empireStateBuilding" class = "dropdown-content">
-					<div style = "background-color: green";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						EMPIRE STATE BUILDING</p>
-					</div>
-					<p>RENT $28</br>
-					With 1 Studio  $150.</br>
-					With 2 Studios 450.</br>
-					With 3 Studios 1000.</br>
-					With 4 Studios 1200.</br>
-					With BROWNSTONE $1400.</br>
-					Mortgage Value $160.</br>
-					Studio cost $200. each</br>
-					Brownstones, $200. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell31_1"></div>
-			<div id = "cell31_2"></div>
-			<div id = "cell31_3"></div>
-			<div id = "cell31_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell18" name = "little italy">
-			<div class = "housePlot" style = "background-color: orange;">
-				<div id = "cell18_h1"></div><div id = "cell18_h2"></div><div id = "cell18_h3"></div>
-				<!-- <div id = "cell18_h1" class = "house"></div><div id = "cell18_h2" class = "house"></div><div id = "cell18_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Little Italy</span>
-			<p>Price $180</p>
-				<div id = "littleItaly" class = "dropdown-content">
-					<div style = "background-color: orange";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						LITTLE ITALY</p>
-					</div>
-					<p>RENT $14</br>
-					With 1 Studio  $70.</br>
-					With 2 Studios 200.</br>
-					With 3 Studios 550.</br>
-					With 4 Studios 750.</br>
-					With BROWNSTONE $950.</br>
-					Mortgage Value $90.</br>
-					Studio cost $100. each</br>
-					Brownstones, $100. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell18_1"></div>
-			<div id = "cell18_2"></div>
-			<div id = "cell18_3"></div>
-			<div id = "cell18_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell32" name = "statue of liberty">
-			<div class = "housePlot" style = "background-color: green;">
-				<div id = "cell32_h1"></div><div id = "cell32_h2"></div><div id = "cell32_h3"></div>
-				<!-- <div id = "cell32_h1" class = "house"></div><div id = "cell32_h2" class = "house"></div><div id = "cell32_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Statue of Liberty</span>
-			<p>Price $300</p>
-				<div id = "statueOfLiberty" class = "dropdown-content">
-					<div style = "background-color: green";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						STATEUE OF LIBERTY</p>
-					</div>
-					<p>RENT $26</br>
-					With 1 Studio  $130.</br>
-					With 2 Studios 390.</br>
-					With 3 Studios 900.</br>
-					With 4 Studios 1100.</br>
-					With BROWNSTONE $1275.</br>
-					Mortgage Value $150.</br>
-					Studio cost $200. each</br>
-					Brownstones, $200. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell32_1"></div>
-			<div id = "cell32_2"></div>
-			<div id = "cell32_3"></div>
-			<div id = "cell32_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell17" name = "null">
-			<div class = "dropdown">
-			<span style = "font-size: 12px;">COMMUNITY CHEST</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell17_1"></div>
-			<div id = "cell17_2"></div>
-			<div id = "cell17_3"></div>
-			<div id = "cell17_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell33">
-			<div class = "dropdown">
-			<span>COMMUNITY CHEST</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell33_1"></div>
-			<div id = "cell33_2"></div>
-			<div id = "cell33_3"></div>
-			<div id = "cell33_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell16" name = "chinatown">
-			<div class = "housePlot" style = "background-color: orange;">
-				<div id = "cell16_h1"></div><div id = "cell16_h2"></div><div id = "cell16_h3"></div>
-				<!-- <div id = "cell16_h1" class = "house"></div><div id = "cell16_h2" class = "house"></div><div id = "cell16_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Chinatown</span>
-			<p>Price $180</p>
-				<div id = "chinatown" class = "dropdown-content">
-					<div style = "background-color: orange";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						CHINATOWN</p>
-					</div>
-					<p>RENT $14</br>
-					With 1 Studio  $70.</br>
-					With 2 Studios 200.</br>
-					With 3 Studios 550.</br>
-					With 4 Studios 750.</br>
-					With BROWNSTONE $950.</br>
-					Mortgage Value $90.</br>
-					Studio cost $100. each</br>
-					Brownstones, $100. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell16_1"></div>
-			<div id = "cell16_2"></div>
-			<div id = "cell16_3"></div>
-			<div id = "cell16_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell34" name = "new york public library">
-			<div class = "housePlot" style = "background-color: green;">
-				<div id = "cell34_h1"></div><div id = "cell34_h2"></div><div id = "cell34_h3"></div>
-				<!-- <div id = "cell34_h1" class = "house"></div><div id = "cell34_h2" class = "house"></div><div id = "cell34_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>New York Public Library</span>
-			<p>Price $300</p>
-				<div id = "newyorkPublicLibrary" class = "dropdown-content">
-					<div style = "background-color: green";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						NEW YORK PUBLIC LIBRARY</p>
-					</div>
-					<p>RENT $26</br>
-					With 1 Studio  $130.</br>
-					With 2 Studios 390.</br>
-					With 3 Studios 900.</br>
-					With 4 Studios 1100.</br>
-					With BROWNSTONE $1275.</br>
-					Mortgage Value $150.</br>
-					Studio cost $200. each</br>
-					Brownstones, $200. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell34_1"></div>
-			<div id = "cell34_2"></div>
-			<div id = "cell34_3"></div>
-			<div id = "cell34_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell15" name = "null">
-			<div class = "dropdown">
-			<span>"D" Train</span>
-			<p>Price $200</p>
-				<div id = "dtrain" class = "dropdown-content">
-					<div>
-						<p style = "font-weight: bold;">"D" TRAIN</br></p>
-					</div>
-					<p>RENT $25</br>
-					If 2 Trains are owned 50.</br>
-					If 3 100.</br>
-					If 4 200.</br>
-					Mortgage Value $100.</br></p>
-				</div>
-			</div>
-			<div id = "cell15_1"></div>
-			<div id = "cell15_2"></div>
-			<div id = "cell15_3"></div>
-			<div id = "cell15_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell35" name = "null">
-			<div class = "dropdown">
-			<span>"4" Train</span>
-			<p>Price $200</p>
-				<div id = "4train" class = "dropdown-content">
-					<div>
-						<p style = "font-weight: bold;">"4" TRAIN</br></p>
-					</div>
-					<p>RENT $25</br>
-					If 2 Trains are owned 50.</br>
-					If 3 100.</br>
-					If 4 200.</br>
-					Mortgage Value $100.</br></p>
-				</div>
-			</div>
-			<div id = "cell35_1"></div>
-			<div id = "cell35_2"></div>
-			<div id = "cell35_3"></div>
-			<div id = "cell35_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell14" name = "central park">
-			<div class = "housePlot" style = "background-color: blueviolet;">
-				<div id = "cell14_h1"></div><div id = "cell14_h2"></div><div id = "cell14_h3"></div>
-				<!-- <div id = "cell14_h1" class = "house"></div><div id = "cell14_h2" class = "house"></div><div id = "cell14_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Central Park</span>
-			<p>Price $140</p>
-				<div id = "centralPark" class = "dropdown-content">
-					<div style = "background-color: blueviolet";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						CENTRAL PARK</p>
-					</div>
-					<p>RENT $10</br>
-					With 1 Studio  $50.</br>
-					With 2 Studios 150.</br>
-					With 3 Studios 450.</br>
-					With 4 Studios 625.</br>
-					With BROWNSTONE $750.</br>
-					Mortgage Value $70.</br>
-					Studio cost $100. each</br>
-					Brownstones, $100. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell14_1"></div>
-			<div id = "cell14_2"></div>
-			<div id = "cell14_3"></div>
-			<div id = "cell14_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell36" name = "null">
-			<div class = "dropdown">
-			<span>CHANCE</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell36_1"></div>
-			<div id = "cell36_2"></div>
-			<div id = "cell36_3"></div>
-			<div id = "cell36_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell13" name = "battery park">
-			<div class = "housePlot" style = "background-color: blueviolet;">
-				<div id = "cell13_h1"></div><div id = "cell13_h2"></div><div id = "cell13_h3"></div>
-				<!-- <div id = "cell13_h1" class = "house"></div><div id = "cell13_h2" class = "house"></div><div id = "cell13_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Battery Park</span>
-			<p>Price $140</p>
-				<div id = "batteryPark" class = "dropdown-content">
-					<div style = "background-color: blueviolet";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						BATTERY PARK</p>
-					</div>
-					<p>RENT $10</br>
-					With 1 Studio  $50.</br>
-					With 2 Studios 150.</br>
-					With 3 Studios 450.</br>
-					With 4 Studios 625.</br>
-					With BROWNSTONE $750.</br>
-					Mortgage Value $70.</br>
-					Studio cost $100. each</br>
-					Brownstones, $100. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell13_1"></div>
-			<div id = "cell13_2"></div>
-			<div id = "cell13_3"></div>
-			<div id = "cell13_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell37" name = "fifth avenue">
-			<div class = "housePlot" style = "background-color: blue;">
-				<div id = "cell37_h1"></div><div id = "cell37_h2"></div><div id = "cell37_h3"></div>
-				<!-- <div id = "cell37_h1" class = "house"></div><div id = "cell37_h2" class = "house"></div><div id = "cell37_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Fifth Avenue</span>
-			<p>Price $400</p>
-				<div id = "fifthAvenue" class = "dropdown-content">
-					<div style = "background-color: blue";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						FIFTH AVENUE</p>
-					</div>
-					<p>RENT $50</br>
-					With 1 Studio  $200.</br>
-					With 2 Studios 600.</br>
-					With 3 Studios 1400.</br>
-					With 4 Studios 1700.</br>
-					With BROWNSTONE $2000.</br>
-					Mortgage Value $200.</br>
-					Studio cost $200. each</br>
-					Brownstones, $200. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell37_1"></div>
-			<div id = "cell37_2"></div>
-			<div id = "cell37_3"></div>
-			<div id = "cell37_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell12" name = "null">
-			<div class = "dropdown">
-			<span style = "font-size: 12px;">ELECTRIC COMPANY</span>
-			<p>Price $150</p>
-				<div id = "electricCompany" class = "dropdown-content">
-					<div>
-						<p style = "font-weight: bold;">ELECTRIC COMPANY</br></p>
-					</div>
-					<p>If one "Utility" is owned rent is 4 times amount shown on dice.</br>
-					If both "Utilities" are owned rent is 10 times amount shown on dice.</br>
-					Mortgage Value $75.</p>
-				</div>
-			</div>
-			<div id = "cell12_1"></div>
-			<div id = "cell12_2"></div>
-			<div id = "cell12_3"></div>
-			<div id = "cell12_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell38" name = "null">
-			<div class = "dropdown">
-			<span>LUXURY TAX</span>
-			<p>Pay $75.00</p>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell38_1"></div>
-			<div id = "cell38_2"></div>
-			<div id = "cell38_3"></div>
-			<div id = "cell38_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 120px;">
-		<div class = "col-sm-1 sqr" id = "cell11" name = "washington square park">
-			<div class = "housePlot" style = "background-color: blueviolet;">
-				<div id = "cell11_h1"></div><div id = "cell11_h2"></div><div id = "cell11_h3"></div>
-				<!-- <div id = "cell11_h1" class = "house"></div><div id = "cell11_h2" class = "house"></div><div id = "cell11_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Washington Square Park</span>
-			<p>Price $160</p>
-				<div id = "washingtonSquarePark" class = "dropdown-content">
-					<div style = "background-color: blueviolet";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						WASHINGTON SQUARE PARK</p>
-					</div>
-					<p>RENT $12</br>
-					With 1 Studio  $60.</br>
-					With 2 Studios 180.</br>
-					With 3 Studios 150.</br>
-					With 4 Studios 700.</br>
-					With BROWNSTONE $900.</br>
-					Mortgage Value $80.</br>
-					Studio cost $100. each</br>
-					Brownstones, $100. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell11_1"></div>
-			<div id = "cell11_2"></div>
-			<div id = "cell11_3"></div>
-			<div id = "cell11_4"></div>
-		</div>
-		<div class = "col-sm-9"></div>
-		<div class = "col-sm-2 sqr" id = "cell39" name = "park avenue">
-			<div class = "housePlot" style = "background-color: blue;">
-				<div id = "cell39_h1"></div><div id = "cell39_h2"></div><div id = "cell39_h3"></div>
-				<!-- <div id = "cell39_h1" class = "house"></div><div id = "cell39_h2" class = "house"></div><div id = "cell39_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Park Avenue</span>
-			<p>Price $350</p>
-				<div id = "parkAvenue" class = "dropdown-content">
-					<div style = "background-color: blue";>
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						PARK AVENUE</p>
-					</div>
-					<p>RENT $35</br>
-					With 1 Studio  $175.</br>
-					With 2 Studios 500.</br>
-					With 3 Studios 1100.</br>
-					With 4 Studios 1300.</br>
-					With BROWNSTONE $1500.</br>
-					Mortgage Value $175.</br>
-					Studio cost $200. each</br>
-					Brownstones, $200. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell39_1"></div>
-			<div id = "cell39_2"></div>
-			<div id = "cell39_3"></div>
-			<div id = "cell39_4"></div>
-		</div>
-	</div>
-	
-	<div class = "row" style = "height: 150px;">
-		<div class = "col-sm-1 sqr" id = "cell10" name = "null">
-			<div class = "dropdown">
-			<span>JAIL</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell10_1"></div>
-			<div id = "cell10_2"></div>
-			<div id = "cell10_3"></div>
-			<div id = "cell10_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell9" name = "manhattan">
-			<div class = "housePlot" style = "background-color: #ccffff;">
-				<div id = "cell9_h1"></div><div id = "cell9_h2"></div><div id = "cell9_h3"></div>
-				<!-- <div id = "cell9_h1" class = "house"></div><div id = "cell9_h2" class = "house"></div><div id = "cell9_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Manhattan</span>
-			<p>Price $120</p>
-				<div id = "manhattan" class = "dropdown-content">
-					<div style = "background-color: #ccffff;">
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						MANHATTAN</p>
-					</div>
-					<p>RENT $8</br>
-					With 1 Studio  $40.</br>
-					With 2 Studios 100.</br>
-					With 3 Studios 300.</br>
-					With 4 Studios 450.</br>
-					With BROWNSTONE $600.</br>
-					Mortgage Value $60.</br>
-					Studio cost $50. each</br>
-					Brownstones, $50. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell9_1"></div>
-			<div id = "cell9_2"></div>
-			<div id = "cell9_3"></div>
-			<div id = "cell9_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell8" name = "null">
-			<div class = "dropdown">
-			<span>Chance</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell8_1"></div>
-			<div id = "cell8_2"></div>
-			<div id = "cell8_3"></div>
-			<div id = "cell8_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell7" name = "queens">
-			<div class = "housePlot" style = "background-color: #ccffff;">
-				<div id = "cell7_h1"></div><div id = "cell7_h2"></div><div id = "cell7_h3"></div>
-				<!-- <div id = "cell7_h1" class = "house"></div><div id = "cell7_h2" class = "house"></div><div id = "cell7_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Queens</span>
-			<p>Price $100</p>
-				<div id = "queens" class = "dropdown-content">
-					<div style = "background-color: #ccffff;">
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						QUEENS</p>
-					</div>
-					<p>RENT $6</br>
-					With 1 Studio  $30.</br>
-					With 2 Studios 90.</br>
-					With 3 Studios 270.</br>
-					With 4 Studios 400.</br>
-					With BROWNSTONE $550.</br>
-					Mortgage Value $50.</br>
-					Studio cost $50. each</br>
-					Brownstones, $50. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell7_1"></div>
-			<div id = "cell7_2"></div>
-			<div id = "cell7_3"></div>
-			<div id = "cell7_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell6" name = "brooklyn">
-			<div class = "housePlot" style = "background-color: #ccffff;">
-				<div id = "cell6_h1"></div><div id = "cell6_h2"></div><div id = "cell6_h3"></div>
-				<!-- <div id = "cell6_h1" class = "house"></div><div id = "cell6_h2" class = "house"></div><div id = "cell6_h3" class = "house"></div> -->
-			</div>
-			<div class = "dropdown">
-			<span>Brooklyn</span>
-			<p>Price $100</p>
-				<div id = "brooklyn" class = "dropdown-content">
-					<div style = "background-color: #ccffff;">
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						BROOKLYN</p>
-					</div>
-					<p>RENT $6</br>
-					With 1 Studio  $30.</br>
-					With 2 Studios 90.</br>
-					With 3 Studios 270.</br>
-					With 4 Studios 400.</br>
-					With BROWNSTONE $550.</br>
-					Mortgage Value $50.</br>
-					Studio cost $50. each</br>
-					Brownstones, $50. plus 4 studios</p>
-				</div>
-			</div>
-			<div id = "cell6_1"></div>
-			<div id = "cell6_2"></div>
-			<div id = "cell6_3"></div>
-			<div id = "cell6_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell5" name = "null">
-			<div class = "dropdown">
-			<span>"A" Train</span>
-			<p>Price $200</p>
-				<div id = "atrain" class = "dropdown-content">
-					<div>
-						<p style = "font-weight: bold;">"4" TRAIN</br></p>
-					</div>
-					<p>RENT $25</br>
-					If 2 Trains are owned 50.</br>
-					If 3 100.</br>
-					If 4 200.</br>
-					Mortgage Value $100.</br></p>
-				</div>
-			</div>
-			<div id = "cell5_1"></div>
-			<div id = "cell5_2"></div>
-			<div id = "cell5_3"></div>
-			<div id = "cell5_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell4" name = "null">
-			<div class = "dropdown">
-			<span>CITY TAX</span>
-			<p>Pay $200.00</p>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<div id = "cell4_1"></div>
-			<div id = "cell4_2"></div>
-			<div id = "cell4_3"></div>
-			<div id = "cell4_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell3" name = "bronx">
-			<div class = "housePlot" style = "background-color: indigo;">
-				<div id = "cell3_h1"></div><div id = "cell3_h2"></div><div id = "cell3_h3"></div>
-			</div>
-		<div class = "dropdown">
-			<span>Bronx</span>
-			<p>Price $60</p>
-				<div id = "bronx" class = "dropdown-content">
-					<div style = "background-color: indigo">
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						BRONX</p>
-					</div>
-					<p>RENT $2</br>
-					With 1 Studio  $10.</br>
-					With 2 Studios 30.</br>
-					With 3 Studios 90.</br>
-					With 4 Studios 160.</br>
-					With BROWNSTONE $250.</br>
-					Mortgage Value $30.</br>
-					Studio cost $50. each</br>
-					Brownstones, $50. plus 4 studios</p>
-				</div>
-			</div>
-			<!--<div class = "piece1"></div>
-			<div></div>-->
-			<div id = "cell3_1"></div>
-			<div id = "cell3_2"></div>
-			<div id = "cell3_3"></div>
-			<div id = "cell3_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell2" name = "null">
-			<div class = "dropdown">
-			<span style = "font-size: 12px;">COMMUNITY CHEST</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<!--<div class = "piece1"></div>
-			<div></div>-->
-			<div id = "cell2_1"></div>
-			<div id = "cell2_2"></div>
-			<div id = "cell2_3"></div>
-			<div id = "cell2_4"></div>
-		</div>
-		<div class = "col-sm-1 sqr" id = "cell1" name = "staten island">
-			<div class = "housePlot" style = "background-color: indigo;">
-				<div id = "cell1_h1"></div><div id = "cell1_h2"></div><div id = "cell1_h3"></div>
-			</div>
-			<div class = "dropdown">
-			<span>Staten Island</span>
-			<p>Price $60</p>
-				<!--<div class = "piece1 piece2"></div>-->
-				<div id = "statenIsland" class = "dropdown-content">
-					<div style = "background-color: indigo">
-						<p style = "font-weight: bold;">TITLE DEED</br>
-						STATEN ISLAND</p>
-					</div>
-					<p>RENT $4</br>
-					With 1 Studio  $20.</br>
-					With 2 Studios 60.</br>
-					With 3 Studios 180.</br>
-					With 4 Studios 320.</br>
-					With BROWNSTONE $450.</br>
-					Mortgage Value $30.</br>
-					Studio cost $50. each</br>
-					Brownstones, $50. plus 4 studios</p>
-				</div>
-			</div>
-			<!--<div class = "piece1"></div>
-			<div></div>-->
-			<div id = "cell1_1"></div>
-			<div id = "cell1_2"></div>
-			<div id = "cell1_3"></div>
-			<div id = "cell1_4"></div>
-		</div>
-		<div class = "col-sm-2 sqr" id = "cell0" name = "go" onClick = "buyProperty()">
-			<div class = "dropdown">
-			<span>GO</span>
-				<div class = "dropdown-content">
-					<p>Hi</p>
-				</div>
-			</div>
-			<!--<div style = "display: none;" class = "piece1"></div>-->
-			<div id = "cell0_1" class = 'piece1'></div>
-			<div id = "cell0_2" class = "piece2"></div>
-			<div id = "cell0_3" class = "piece3"></div>
-			<div id = "cell0_4" class = "piece4"></div>
-		</div>
-	</div>
-	
-</div><!--end bootstrap(?)-->
-
-<div class = "terminal"><p>Shalom and welcome to Monopoly NYC edition.</p>
-	<div class = "trade-button" onClick = "askTrade()">Trade</div>
-	<div class = "buy-button" onClick = "showBuy()">Buy</div>
-	<div class = "turn-button" onClick = "switchTurn()">End Turn</div>
-	<div class = "money-button" onClick = "showMoney()">View Your Money</div>
-	<div class = "property-button" onClick = "showProperties()">Properties</div>
-		<div id = "function-box" class = "function-container">
-			<div class = "studio-button" onClick = "buyStudio()">Buy Studio</div>
-			<select id = "firstDropdown" name = "firstDropdown"></select>
-			<select id = "secondDropdown" name = "secondDropdown"></select>
-			<input id = "submitButton" type="submit" class="btn btn-info" value="Submit Button">
-		</div>
-			<div class = "diceContainer">
-				<div>
-					<div class = "die" id = "die1-display">Die!</div>
-					<div class = "die" id = "die2-display">You die!</div>
-				</div>
-			</div>
+<div class="openBtn" id="openBtn" onclick="openDash()">
+	<p>Open &#9776;</p>
 </div>
 
-<div id = "diceButton" class = "dice-button popup" onclick = "myFunction()">Roll Dice!
-	<span class = "popuptext" id = "myPopup">tee hee that tickles!</span>
+<div id="buy-menu" onmousedown="dragElement(this)">
+	<p id="buy-menu-header" class="menu-header">Grab Me</p>
+	<p class="closebtn" onclick="closePurchase()">&times;</p>
+	<div style="border-bottom: 1px solid black;">
+		<p id="purchase-message"></p>
+		<select id="my-dropdown">
+			<option value="yes">Yes</option>
+			<option value='no'>No</option>
+		</select>
+		<button id="my-button" onclick="getPropertyDecision()">Enter</button>
+	</div>
+	<div style="border-bottom: 1px solid black;">
+		<p id="studio-message">You cannot own studios on this land.</p>
+		<select id="studio-dropdown">
+			<option value="">---Select---</option>
+		</select>
+		<button id="studio-button" onclick="getStudioChoice()">Buy Studio</button>
+	</div>
+	<div>
+		<p id="brownstone-message">You cannot buy any brownstones.</p>
+		<select id="brownstone-select">
+			<option value="">---Select---</option>
+		</select>
+		<button id="brownstone-button" onclick="getBrownstoneChoice()">Buy Brownstone</button>
+	</div>
 </div>
 
-<!--<div id = "selectBox" class = "select-menu">
-	<select id = "firstDropdown" name = "firstDropdown"></select>
-	<select id = "secondDropdown" name = "secondDropdown"></select>
-	<input id = "submitButton" type="submit" class="btn btn-info" value="Submit Button">
-</div>-->
-
-<div id = "log" class = "log">
-	This is the log. It is player 1's turn.
+<div id="trade-menu" onmousedown="dragElement(this)">
+	<p id="trade-menu-header" class="menu-header">Grab Me</p>
+	<p class="closebtn" onclick="closeTradeMenu()">&times;</p>
+	<div style="border-bottom: 1px solid black;">
+		<p id="trade-message">Future messge</p>
+		<select id="trade-select">
+			<option value="">---Select---</option>
+		</select>
+	</div>
+	<div style="border-bottom: 1px solid black;">
+		<p>Select trade partner.</p>
+		<select id="player-select">
+			<option value="player1">Player 1</option>
+			<option value="player2">Player 2</option>
+			<option value="player3">Player 3</option>
+			<option value="player4">Player 4</option>
+		</select>
+		<button id="trade-enter" onclick="getTradeOption()">Trade</button>
+	</div>
 </div>
 
-<div class = "footer">
-	<h2><font color = "SlateBlue">Footer</font></h2>
+<div id="get-out-of-jail-prompt">
+	<p>Would you like to pay $50 or roll doubles to get out of jail?</p>
+	<div id="pay">
+		<p>Pay $50</p>
+	</div>
+	<div id="roll">
+		<p>Roll for doubles</p>
+	</div>
 </div>
+
+<div id="player-window"></div>
+
+<div id="house-rules">
+	<p class="closebtn" onclick="closeHouseRules()">&times;</p>
+	<p style="text-align: center; padding-top: 10px;">HOUSE RULES</p>
+	<ol>
+		<li>When you role doubles, you role again and <i>then</i> move your player piece.</li>
+		<li>No bidding for land; you must land on a space to buy it.</li>
+		<li>There is no banker since any player can access the bank.</li>
+		<li>A player may buy any studio or brownstone for any of their owned properties.
+				i.e. you don't have to evenly build up a color group.</li>
+		<li>A player landing on a property must always pay rent because player's
+				cannot ask each other.</li>
+		<li>You must pay $200 when you land on income tax. Players don't have the
+				choice to pay 10% of their worth.</li>
+		<li>Mortgage has been removed from the game. So, a player <i>must always</i>
+				pay rent when they land on owned property.</li>
+		<li>When a player goes bankrupt, all their assets are up for grabs for
+				any player that lands on that property. There is no auction.
+				It can be purchased with its studios/brownstones for its original
+				cost.</li>
+	</ol>
+	<!--
+	when you role doubles, you role again and THEN move your player piece
+	no bidding for land; you must land on a space to buy it
+	there is no banker since any player can access the bank
+	a player may buy any studio or brownstone for any of their owned properties.
+		i.e. you don't have to evenly build up a color group
+	a player landing on a property must always pay rent because player's cannot
+		ask each other
+	you must pay $200 when you land on income tax. Players don't have the choice
+		to pay 10% of their worth
+
+-->
+</div>
+
+<div class="grid-container" id="main">
+	<div id="s21" style="position: relative;"><!--21-->
+		<p>Free Parking</p>
+		<div class="player-holder">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div id="s22" class="dropdown" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Times Square</p>
+		<div class="player-holder">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+			<!--<div style="background-color: red;">
+				<p style="font-weight: bold;">TITLE DEED</p>
+				<p style="font-weight: bold;">TIMES SQUARE</p>
+			</div>
+			<p style="font-weight: bold;">Price $220</p>
+			<p>RENT $18</p>
+			<p>With 1 Studio  $90.</p>
+			<p>With 2 Studios 250.</p>
+			<p>With 3 Studios 700.</p>
+			<p>With 4 Studios 875.</p>
+			<p>With BROWNSTONE $1050.</p>
+			<p>Mortgage Value $110.</p>
+			<p>Studio cost $150. each</p>
+			<p>Brownstones, $150. plus 4 studios</p>-->
+		</div>
+	</div>
+	<div id="s23" style="position: relative;">
+		<p>Chance</p>
+		<div class="player-holder">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="dropdown" id="s24" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Wall Street</p>
+		<div class="player-holder">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+
+	</div>
+	<div class="dropdown" id="s25" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Broadway</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s26" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<p>"N" Train</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s27" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>New York Harbor</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s28" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Hudson River</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s29" onmouseover="showCard(this)" onmouseout="hideCard(this)"><!--29-->
+		<p>Water Works</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s30" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>East River</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div id="s31" style="position: relative;"><!--31-->
+		<p>GO TO JAIL</p>
+		<div class="player-holder">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<div class="dropdown" id="s20" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Greenwich Village</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="middle" id="s41">
+		<!--<p>middle (41)</p>-->
+		<div id="log-container">
+			<div id="log">
+				<div id="progress-container">
+					<div id="progress-bar"></div>
+				</div>
+				<p>Welcome to Monopoly</p>
+			</div>
+			<div id="diceBtn" onclick="rollDice()">
+				<p>Roll dice</p>
+			</div>
+			<div id="tradeBtn" onclick="openTradeMenu()">
+				<p>Trade</p>
+			</div>
+			<div id="buyBtn" onclick="showBuyMenu();">
+				<p>Buy</p>
+			</div>
+			<div id="endBtn" onclick="switchTurn()">
+				<p>End turn</p>
+			</div>
+		</div>
+	</div>
+	<div class="dropdown" id="s32" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Empire State Building</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+
+	<div class="dropdown" id="s19" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Little Italy</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s33" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Statue of Liberty</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+
+	<div id="s18" style="position: relative;"><!--18-->
+		<p class="community-chest">COMMUNITY CHEST</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div id="s34" style="position: relative;"><!--34-->
+		<p class="community-chest">COMMUNTITY CHEST</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<div class="dropdown" id="s17" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Chinatown</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s35" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>New York Public Library</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+
+	<div class="dropdown" id="s16" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<p>"D" Train</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s36" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<p>"4" Train</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+
+	<div class="dropdown" id="s15" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Central Park</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div id="s37" style="position: relative;">
+		<p>CHANCE</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<div class="dropdown" id="s14" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Battery Park</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s38" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Fifth Avenue</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+
+	<div class="dropdown" id="s13" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<p>ELECTRIC COMPANY</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+			<!--<div>
+				<p style = "font-weight: bold;">ELECTRIC COMPANY</p>
+			</div>
+			<p style="font-weight: bold;">Price $150</p>
+			<p>If one "Utility" is owned rent is 4 times amount shown on dice.</br>
+			If both "Utilities" are owned rent is 10 times amount shown on dice.</br>
+			Mortgage Value $75.</p>-->
+		</div>
+	</div>
+	<div id="s39" style="position: relative;">
+		<p>LUXURY TAX</p>
+		<p>Pay $75.00</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+
+	<div class="dropdown" id="s12" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Washington Square Park</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div class="dropdown" id="s40" onmouseover="showCard(this)" onmouseout="hideCard(this)"><!--40-->
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Park Avenue</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+
+	<div id="s11" style="position: relative;">
+		<div id="jail"><!--11-->
+			<p>JAIL</p>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="dropdown" id="s10" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Manhattan</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div id="s9" style="position: relative;">
+		<p>CHANCE</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="dropdown" id="s8" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Queens</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+
+	</div>
+	<div class="dropdown" id="s7" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Brooklyn</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+
+	</div>
+	<div class="dropdown" id="s6" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<p>"A" Train</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div id="s5" style="position: relative;">
+		<p>CITY TAX</p>
+		<p>Pay $200.00</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="dropdown" id="s4" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Bronx</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div id="s3" style="position: relative;">
+		<p class="community-chest">COMMUNTITY CHEST</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<div class="dropdown" id="s2" onmouseover="showCard(this)" onmouseout="hideCard(this)">
+		<div class="property-container">
+			<!--<div class="house"></div>
+			<div class="house"></div>
+			<div class="house"></div>
+			<div class="house"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<p>Staten Island</p>
+		<div class="player-holder">
+			<!--<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>-->
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="dropdown-content">
+		</div>
+	</div>
+	<div id="s1" style="position: relative;"><!--1-->
+		<p>GO</p>
+		<div class="player-holder">
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+			<div class="player"></div>
+		</div>
+	</div>
+</div>
+<script src="monopolySquares.js"></script>
+<script src="monopolyV2.js"></script>
+<script src="communityChestChanceCards.js"></script>
+<script>
+/*var test = document.getElementById("22");
+alert(test);
+test = test.querySelector(".player-holder");
+alert(test);
+test.getElementsByTagName("div")[0];
+alert(test);*/
+</script>
 </body>
 </html>
